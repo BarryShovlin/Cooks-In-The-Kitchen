@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom';
 import { BrowserRouter as Router } from "react-router-dom";
 import './index.css';
 import { Kitchen } from "./components/Kitchen"
+import "./components/Kitchen.css"
 
 
 ReactDOM.render(
