@@ -9,5 +9,9 @@ export const KitchenCard = ({kitchen}) => (
                 { kitchen.name }
             </Link>
         </h3>
+        <div className="kitchen_address">
+            { kitchen.address }
+        </div>
     </section>
 );
+

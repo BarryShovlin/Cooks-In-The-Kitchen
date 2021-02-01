@@ -19,10 +19,15 @@ export const KitchenProvider = (props) => {
             .then(res => res.json())
     }
 
+    const getUserKitchen = (userId) => {
+        return fetch(`http://localhost:8088/userKitchens/${userId}`)
+        .then(res => res.json())
+    }
+
 
     return (
         <KitchenContext.Provider value={{
-            kitchens, getKitchens, getKitchenById
+            kitchens, getKitchens, getKitchenById, getUserKitchen
         }}>
             {props.children}
         </KitchenContext.Provider>
