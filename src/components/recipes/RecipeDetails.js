@@ -1,7 +1,7 @@
 import React, { useContext, useEffect, useState } from "react"
 import { RecipeContext } from "./RecipeProvider"
 import "./Recipe.css"
-import { useParams, useHistory } from "react-router-dom"
+import { useParams, useHistory, Link } from "react-router-dom"
 
 export const RecipeDetail = () => {
     const { getRecipeById } = useContext(RecipeContext)
@@ -22,7 +22,13 @@ export const RecipeDetail = () => {
     return (
         <section className="recipe">
             <h3 className="recipe_name">{recipe.name}</h3>
-            <div classname=""
+            <div classname="recipe_description">{recipe.description}</div>
+            <div className="recipe_price">{recipe.price}</div>
+            <button>
+                <Link to={`/recipes/detail/${recipe.id}`}>
+                    See Full Recipe
+                </Link>
+            </button>
         </section>
     )
 }
