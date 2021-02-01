@@ -5,15 +5,20 @@ export const RecipeContext = createContext()
 
 export const RecipeProvider = (props) => {
     const [recipes, setRecipes] = useState([])
+    
     const getRecipes = () => {
-        return fetch("http//localhost:8088/recipes")
+        return fetch("http://localhost:8088/recipes")
         .then(res => res.json())
         .then(setRecipes)
+    }
+    const getRecipeById = (id) => {
+        return fetch(`http://localhost:8088/recipes/${id}`)
+        .then(res => res.json())
     }
 
     return (
         <RecipeContext.Provider value={{
-            recipes, getRecipes
+            recipes, getRecipes, getRecipeById
         }}>
         {props.children}
         </RecipeContext.Provider>
