@@ -6,5 +6,9 @@ export const Home = () => (
     <>
         <h1>Cooks In The Kitchen</h1>
         <small>Keeping Consistency In The Kitchen</small>
+
+        <div className="kitchen__dropdown">
+            
+        </div>
     </>
 );
