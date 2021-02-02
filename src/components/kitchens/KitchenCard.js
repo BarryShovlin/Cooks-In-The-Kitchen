@@ -11,3 +11,4 @@ export const KitchenCard = ({kitchen}) => (
         </h3>
     </section>
 );
+

@@ -21,8 +21,9 @@ export const KitchenSelect = () => {
       kitchens.map(kitchen => {
         return <KitchenCard key={kitchen.id} kitchen={kitchen} />
       })
-        }
-        </div>
+    }
+            </div>
+
     </>
       );
 }

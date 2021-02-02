@@ -15,14 +15,26 @@ export const KitchenProvider = (props) => {
     }
 
     const getKitchenById = (id) => {
-        return fetch(`http://localhost:8088/kithens/${id}`)
+        return fetch(`http://localhost:8088/kitchens/${id}`)
             .then(res => res.json())
+    }
+
+    const getUserKitchen = (userId) => {
+        return fetch(`http://localhost:8088/userKitchens/${userId}`)
+        .then(res => res.json())
+    }
+
+    const deleteKitchen = userKitchenId => {
+        return fetch(`http://localhost:8088/userKitchens/${userKitchenId}`, {
+            method: "DELETE"
+        })
+        .then(getKitchens)
     }
 
 
     return (
         <KitchenContext.Provider value={{
-            kitchens, getKitchens, getKitchenById
+            kitchens, getKitchens, getKitchenById, getUserKitchen, deleteKitchen
         }}>
             {props.children}
         </KitchenContext.Provider>
