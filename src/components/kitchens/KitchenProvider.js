@@ -24,10 +24,17 @@ export const KitchenProvider = (props) => {
         .then(res => res.json())
     }
 
+    const deleteKitchen = kitchenId => {
+        return fetch(`http://localHost:8088/kitchens/${kitchenId}`, {
+            method: "DELETE"
+        })
+        .then(getKitchens)
+    }
+
 
     return (
         <KitchenContext.Provider value={{
-            kitchens, getKitchens, getKitchenById, getUserKitchen
+            kitchens, getKitchens, getKitchenById, getUserKitchen, deleteKitchen
         }}>
             {props.children}
         </KitchenContext.Provider>

@@ -18,11 +18,12 @@ export const ApplicationViews = () => {
             <Route path="/kitchens">
                 <KitchenSelect />
             </Route>
-            <Route path="/recipes">
+            <Route exact path="/recipes/detail/:recipeId(\d+)">
                 <RecipeDetail />
             </Route>
             </RecipeProvider>
         </KitchenProvider>
+
 
         </>
     )

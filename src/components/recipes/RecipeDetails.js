@@ -18,7 +18,6 @@ export const RecipeDetail = () => {
             setRecipes(response)
         })
     }, [])
-
     return (
         <section className="recipe">
             <h3 className="recipe_name">{recipe.name}</h3>
@@ -26,7 +25,7 @@ export const RecipeDetail = () => {
             <div className="recipe_price">{recipe.price}</div>
             <button>
                 <Link to={`/recipes/detail/${recipe.id}`}>
-                    See Full Recipe
+                    { recipe.name }
                 </Link>
             </button>
         </section>
