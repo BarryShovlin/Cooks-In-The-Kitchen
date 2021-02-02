@@ -15,7 +15,7 @@ export const KitchenProvider = (props) => {
     }
 
     const getKitchenById = (id) => {
-        return fetch(`http://localhost:8088/kithens/${id}`)
+        return fetch(`http://localhost:8088/kitchens/${id}`)
             .then(res => res.json())
     }
 

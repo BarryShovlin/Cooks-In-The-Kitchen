@@ -3,8 +3,7 @@ import { Route } from "react-router-dom"
 import { Home } from "./Home"
 import { KitchenSelect } from "./kitchens/KitchenSelect"
 import { KitchenProvider } from  "./kitchens/KitchenProvider"
-import { RecipeProvider } from "./recipes/RecipeProvider"
-import { RecipeDetail } from "./recipes/RecipeDetails"
+import { KitchenDetail } from "./kitchens/KitchenDetail"
 
 export const ApplicationViews = () => {
     return (
@@ -14,14 +13,14 @@ export const ApplicationViews = () => {
         </Route>
 
         <KitchenProvider>
-            <RecipeProvider>
             <Route path="/kitchens">
                 <KitchenSelect />
             </Route>
-            <Route exact path="/recipes/detail/:recipeId(\d+)">
-                <RecipeDetail />
+        </KitchenProvider>
+        <KitchenProvider>
+        <Route exact path="/kitchens/detail/:kitchenId(\d+)">
+                <KitchenDetail />
             </Route>
-            </RecipeProvider>
         </KitchenProvider>
 
 
