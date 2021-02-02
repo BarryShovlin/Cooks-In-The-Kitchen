@@ -6,7 +6,7 @@ import { useHistory, useParams } from "react-router-dom"
  export const KitchenDetail = () => {
     const { getKitchenById, deleteKitchen } = useContext(KitchenContext)
 
-    const [kitchen, setKitchens] = useState({})
+    const [kitchen, setKitchen] = useState({})
 
     const {kitchenId} = useParams()
     const history = useHistory()
@@ -21,9 +21,7 @@ import { useHistory, useParams } from "react-router-dom"
     useEffect(() => {
         console.log("useEffect", kitchenId)
         getKitchenById(kitchenId)
-        .then((response) => {
-            setKitchens(response)
-        })
+        .then(setKitchen)
     }, [])
     console.log(kitchen)
     return (
