@@ -13,7 +13,7 @@ export const ApplicationViews = () => {
         </Route>
 
         <KitchenProvider>
-            <Route path="/kitchens">
+            <Route exact path="/kitchens">
                 <KitchenSelect />
             </Route>
         </KitchenProvider>
