@@ -8,7 +8,7 @@ import { useHistory, useParams } from "react-router-dom"
 
     const [kitchen, setKitchens] = useState({})
 
-    const {kitchenId} = useParams
+    const {kitchenId} = useParams()
     const history = useHistory()
 
     const handleDelete = () => {
@@ -19,12 +19,13 @@ import { useHistory, useParams } from "react-router-dom"
     }
 
     useEffect(() => {
+        console.log("useEffect", kitchenId)
         getKitchenById(kitchenId)
         .then((response) => {
             setKitchens(response)
         })
     }, [])
-
+    console.log(kitchen)
     return (
         <section className="kitchen">
             <h3 className="kitchen_name">{kitchen.name}</h3>

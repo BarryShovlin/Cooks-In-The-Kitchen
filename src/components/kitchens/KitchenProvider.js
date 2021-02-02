@@ -15,7 +15,7 @@ export const KitchenProvider = (props) => {
     }
 
     const getKitchenById = (id) => {
-        return fetch(`http://localhost:8088/kitchens/${id}`)
+        return fetch(`http://localhost:8088/kitchens/?${id}`)
             .then(res => res.json())
     }
 
@@ -25,7 +25,7 @@ export const KitchenProvider = (props) => {
     }
 
     const deleteKitchen = kitchenId => {
-        return fetch(`http://localHost:8088/kitchens/${kitchenId}`, {
+        return fetch(`http://localHost:8088/kitchens/?${kitchenId}`, {
             method: "DELETE"
         })
         .then(getKitchens)
