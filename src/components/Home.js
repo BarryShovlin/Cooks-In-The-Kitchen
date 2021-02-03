@@ -21,7 +21,7 @@ export const Home = () => {
     const handleClickAddKitchen = (event) => {
         event.preventDefault()
 
-        const kitchenId = parseInt(userKitchen.kitchenId)
+     
         addUserKitchen(kitchens)
             .then(() => history.push("/userKitchens"))
     }
@@ -39,9 +39,6 @@ export const Home = () => {
                         return <KitchenCard key={kitchen.id} kitchen={kitchen} />
                     })
                 }
-                <button onClick={handleClickAddKitchen}>
-                    Add To Your Kitchens
-                </button>
             </div>
 
         </>
