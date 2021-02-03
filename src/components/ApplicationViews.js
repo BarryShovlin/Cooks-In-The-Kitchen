@@ -4,22 +4,25 @@ import { Home } from "./Home"
 import { KitchenSelect } from "./kitchens/KitchenSelect"
 import { KitchenProvider } from "./kitchens/KitchenProvider"
 import { KitchenDetail } from "./kitchens/KitchenDetail"
+import { UserKitchenProvider } from "./kitchens/UserKitchenProvider"
 
 export const ApplicationViews = () => {
     return (
         <>
-            <Route path="/">
-                <Home />
-            </Route>
+            <UserKitchenProvider>
+                <KitchenProvider>
+                    <Route exact path="/">
+                        <Home />
+                    </Route>
+                </KitchenProvider>
+            </UserKitchenProvider>
 
-            <KitchenProvider>
-                <Route exact path="/kitchens">
-                    <KitchenSelect />
-                </Route>
-                <Route exact path="/kitchens/detail/:kitchenId(\d+)">
+            <UserKitchenProvider>
+                <Route exact path="/userKitchens">
                     <KitchenDetail />
                 </Route>
-            </KitchenProvider>
+
+            </UserKitchenProvider>
 
 
 

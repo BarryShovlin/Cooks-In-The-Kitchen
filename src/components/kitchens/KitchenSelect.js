@@ -6,6 +6,7 @@ import { KitchenCard } from "./KitchenCard"
 
 export const KitchenSelect = () => {
     const {kitchens, getKitchens} = useContext(KitchenContext)
+    const history = useHistory()
  
 
     useEffect(() => {
