@@ -1,13 +1,15 @@
-import React, { useContext, useEffect } from "react";
+import React, { useState, useContext, useEffect } from "react";
 import "./Kitchen.css";
-import { Link, useHistory } from "react-router-dom"
+import { useHistory } from "react-router-dom"
 import { KitchenContext } from "./KitchenProvider"
 import { UserKitchenContext } from "./UserKitchenProvider"
 
 export const KitchenCard = ({kitchen}) => {
-    const { kitchens, getKitchens } = useContext(KitchenContext)
-    const { addUserKitchen } = useContext(UserKitchenContext)
+    const { kitchens, getKitchensById, getKitchens } = useContext(KitchenContext)
+    const { addUserKitchen, getUserKitchens } = useContext(UserKitchenContext)
     const history = useHistory()
+
+
 
     useEffect(() => {
         getKitchens()
@@ -18,7 +20,8 @@ export const KitchenCard = ({kitchen}) => {
 
      
         addUserKitchen(kitchens)
-            .then(() => history.push("/userKitchens"))
+            .then(getKitchensById)
+            .then(() => history.push(`/kitchen/detail/${kitchen.id}`))
     }
     return (
     <section className="kitchen">
@@ -26,7 +29,7 @@ export const KitchenCard = ({kitchen}) => {
                 { kitchen.name }
         </h3>
         <div className="kitchen__address">{kitchen.address}</div>
-        <div className="kitchen__phone">phone:{kitchen.phone}</div>
+        <div className="kitchen__phone">address:{kitchen.address}</div>
         <button onClick={handleClickAddKitchen}>
                     Add To Your Kitchens
                 </button>

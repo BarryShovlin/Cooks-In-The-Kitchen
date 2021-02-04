@@ -31,7 +31,7 @@ export const Home = () => {
             <h1>Cooks In The Kitchen</h1>
             <small>Keeping Consistency In The Kitchen</small>
             <div>
-                <Link classname="userKitchens" to="/userKitchens">Go to your kitchens</Link>
+                <Link className="userKitchens" to="/userKitchens">Go to your kitchens</Link>
             </div>
             <div className="add_userKitchen">
                 {
