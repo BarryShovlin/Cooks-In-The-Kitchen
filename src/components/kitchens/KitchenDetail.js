@@ -1,14 +1,12 @@
 import React, { useEffect, useState, useContext } from "react"
-import { UserKitchenContext } from "./UserKitchenProvider"
 import { KitchenContext } from "./KitchenProvider"
 import "./Kitchen.css"
 import { useHistory, useParams } from "react-router-dom"
 
  export const KitchenDetail = () => {
      const { kitchens, getKitchens, getKitchenById} = useContext(KitchenContext)
-    const { getUserKitchens, getUserKitchenById, deleteUserKitchen } = useContext(UserKitchenContext)
 
-    const [kitchen, setKitchen] = useState({})
+    const [kitchen, setKitchens] = useState({})
 
     const {kitchenId} = useParams()
     const history = useHistory()
@@ -17,7 +15,7 @@ import { useHistory, useParams } from "react-router-dom"
 
     useEffect(() => {
         getKitchenById(kitchenId)
-        .then(setKitchen)
+        .then(setKitchens)
     }, [])
 
 

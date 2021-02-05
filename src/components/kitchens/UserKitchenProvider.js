@@ -35,7 +35,7 @@ export const UserKitchenProvider = (props) => {
             },
             body: JSON.stringify(kitchenObj)
         })
-        .then(getUserKitchens)
+        .then(setUserKitchen)
     }
 
 

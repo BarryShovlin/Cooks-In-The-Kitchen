@@ -5,22 +5,29 @@ import { KitchenContext } from "./KitchenProvider"
 import { UserKitchenContext } from "./UserKitchenProvider"
 
 export const KitchenCard = ({kitchen}) => {
-    const { kitchens, getKitchensById, getKitchens } = useContext(KitchenContext)
+    const { kitchens, getKitchensById, getKitchens, addKitchen } = useContext(KitchenContext)
     const { addUserKitchen, getUserKitchens } = useContext(UserKitchenContext)
+
+    const [kitch, setKitchen] = useState({
+        userId: 0,
+        kitchenId: 0
+    })
+  
     const history = useHistory()
 
 
 
     useEffect(() => {
         getKitchens()
-    }, [])
+        .then(setKitchen)
+    }, []) 
 
     const handleClickAddKitchen = (event) => {
         event.preventDefault()
 
      
-        addUserKitchen(kitchens)
-            .then(getKitchensById)
+        addUserKitchen(kitch)
+        .then(setKitchen)
             .then(() => history.push(`/kitchen/detail/${kitchen.id}`))
     }
     return (

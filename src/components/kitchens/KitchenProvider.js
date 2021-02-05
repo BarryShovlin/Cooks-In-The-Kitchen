@@ -31,10 +31,20 @@ export const KitchenProvider = (props) => {
         .then(getKitchens)
     }
 
+    const addKitchen = kitchenObj => {
+        return fetch("http://localhost:8088/kitchens", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application.json"
+            },
+            body: JSON.stringify(kitchenObj)
+        })
+        .then(getKitchens)
+    }
 
     return (
         <KitchenContext.Provider value={{
-            kitchens, getKitchens, getKitchenById, getUserKitchen, deleteKitchen
+            kitchens, getKitchens, getKitchenById, addKitchen, getUserKitchen, deleteKitchen
         }}>
             {props.children}
         </KitchenContext.Provider>
