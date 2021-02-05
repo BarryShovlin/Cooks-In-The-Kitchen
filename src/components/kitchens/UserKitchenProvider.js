@@ -15,7 +15,7 @@ export const UserKitchenProvider = (props) => {
     }
 
     const getUserKitchens = () => {
-        return fetch("http://localhost:8088/userKitchens?_embed=kitchen")
+        return fetch("http://localhost:8088/userKitchens?_embed=kitchen&&_expand=recipes")
         .then(res => res.json())
         .then(setUserKitchen)
     }
@@ -27,15 +27,16 @@ export const UserKitchenProvider = (props) => {
         .then(getUserKitchens)
     }
 
-    const addUserKitchen = kitchenObj => {
+    const addUserKitchen = userKitchenObj => {
         return fetch("http://localhost:8088/userKitchens", {
             method: "POST",
             headers: {
-                "Content-Type": "application.json"
+                "Content-Type": "application/json"
             },
-            body: JSON.stringify(kitchenObj)
+            body: JSON.stringify(userKitchenObj)
         })
         .then(setUserKitchen)
+        .then(getUserKitchens)
     }
 
 

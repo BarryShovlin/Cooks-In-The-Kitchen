@@ -6,11 +6,10 @@ import { useHistory, useParams } from "react-router-dom"
  export const KitchenDetail = () => {
      const { kitchens, getKitchens, getKitchenById} = useContext(KitchenContext)
 
-    const [kitchen, setKitchens] = useState({})
-
     const {kitchenId} = useParams()
     const history = useHistory()
 
+    const [kitchen, setKitchens] = useState({})
  
 
     useEffect(() => {

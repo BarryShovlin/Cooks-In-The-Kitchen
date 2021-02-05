@@ -7,9 +7,9 @@ export const KitchenSelect = () => {
  
 
     useEffect(() => {
-        getKitchens();
-    
-      }, []);
+      getKitchens();
+  
+    }, []);
 
       return (
         <>
