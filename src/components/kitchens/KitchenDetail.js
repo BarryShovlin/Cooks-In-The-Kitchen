@@ -1,35 +1,32 @@
 import React, { useEffect, useState, useContext } from "react"
-import { UserKitchenContext } from "./UserKitchenProvider"
+import { KitchenContext } from "./KitchenProvider"
 import "./Kitchen.css"
 import { useHistory, useParams } from "react-router-dom"
 
  export const KitchenDetail = () => {
-    const { getUserKitchens, deleteUserKitchen } = useContext(UserKitchenContext)
+     const { kitchens, getKitchens, getKitchenById} = useContext(KitchenContext)
 
-    const [userKitchen, setUserKitchen] = useState({})
-
-    const {userKitchenId} = useParams()
+    const {kitchenId} = useParams()
     const history = useHistory()
 
-    const handleDelete = () => {
-        deleteUserKitchen(userKitchen.id)
-        .then(() => {
-            history.push("/userKitchens")
-        })
-    }
+    const [kitchen, setKitchens] = useState({})
+ 
 
     useEffect(() => {
-        console.log("useEffect", userKitchenId)
-        getUserKitchens(userKitchenId)
-        .then(setUserKitchen)
+        getKitchenById(kitchenId)
+        .then(setKitchens)
     }, [])
+
+
+    useEffect(() => {
+        console.log("useEffect", kitchen)
+    }, [kitchen])
    
     return (
-        <section className="userKitchen">
-            <h3 className="userKitchen_name">{userKitchen.name}</h3>
-            <div className="userKitchen_address">{userKitchen.address}</div>
-            <div className="userKitchen_phone">{userKitchen.phone}</div>
-            <button onClick={handleDelete}>Remove userKitchen</button>
+        <section className="kitchens">
+            <h3 className="kitchen_name">{kitchen.name}</h3>
+            <div className="kitchen_address">{kitchen.address}</div>
+            <div className="kitchen_phone">{kitchen.phone}</div>
         </section>
     )
 

@@ -15,9 +15,9 @@ export const UserKitchenProvider = (props) => {
     }
 
     const getUserKitchens = () => {
-        return fetch("http://localhost:8088/userKitchens?_expand=kitchen")
+        return fetch("http://localhost:8088/userKitchens?_embed=kitchen&&_expand=recipes")
         .then(res => res.json())
-        .then(setUserKitchen())
+        .then(setUserKitchen)
     }
 
     const deleteUserKitchen = userKitchenId => {
@@ -27,14 +27,15 @@ export const UserKitchenProvider = (props) => {
         .then(getUserKitchens)
     }
 
-    const addUserKitchen = kitchenObj => {
-        return fetch("http://localhost8088/userKitchens", {
+    const addUserKitchen = userKitchenObj => {
+        return fetch("http://localhost:8088/userKitchens", {
             method: "POST",
             headers: {
-                "Content-Type": "application.json"
+                "Content-Type": "application/json"
             },
-            body: JSON.stringify(kitchenObj)
+            body: JSON.stringify(userKitchenObj)
         })
+        .then(setUserKitchen)
         .then(getUserKitchens)
     }
 
