@@ -1,13 +1,13 @@
-import React, { useEffect, useContext } from "react"
+import React, { useEffect, useContext, useState } from "react"
 import {  RecipeContext } from "./RecipeProvider"
 import { RecipeCard } from "./RecipeCard"
 
 export const RecipeList = () => {
     const {recipes, getRecipes} = useContext(RecipeContext)
- 
+   
 
     useEffect(() => {
-      getRecipes();
+      getRecipes()
   
     }, []);
 

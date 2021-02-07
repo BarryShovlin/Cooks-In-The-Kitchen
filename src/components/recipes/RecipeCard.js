@@ -29,8 +29,8 @@ export const RecipeCard = ({recipe}) => {
         <h3 className="recipe__name">
                 { recipe.name }
         </h3>
-        <div className="recipe__address">{recipe.address}</div>
-        <div className="recipe__phone">address:{recipe.address}</div>
+        <div className="recipe__description">{recipe.description}</div>
+        <div className="price">price:{recipe.address}</div>
 
     </section>
 );
