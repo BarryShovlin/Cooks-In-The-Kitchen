@@ -4,7 +4,7 @@ import { useHistory } from "react-router-dom"
 import { KitchenContext } from "./KitchenProvider"
 import { UserKitchenContext } from "./UserKitchenProvider"
 
-export const KitchenCard = ({kitchen}) => {
+export const userKitchenCard = ({kitchen}) => {
     const { kitchens, getKitchensById, getKitchens, addKitchen } = useContext(KitchenContext)
     const { addUserKitchen, getUserKitchens } = useContext(UserKitchenContext)
 
@@ -32,8 +32,8 @@ export const KitchenCard = ({kitchen}) => {
         </h3>
         <div className="kitchen__address">{kitchen.address}</div>
         <div className="kitchen__phone">address:{kitchen.address}</div>
-        <button onClick={handleClickAddKitchen}>
-                    Add To Your Kitchens
+        <button onClick={handleClickRecipeView}>
+                    Check out the recipes
                 </button>
 
     </section>

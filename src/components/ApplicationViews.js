@@ -25,9 +25,9 @@ export const ApplicationViews = () => {
             <UserKitchenProvider>
                 <KitchenProvider>
                     <Route exact path="/kitchen/detail/:kitchenId(\d+)">
-                        <KitchenDetail />
+                        <UserKitchenDetail />
                     </Route>
-                    <Route path="/userKitchens">
+                    <Route exact path="/userKitchens">
                         <UserKitchenList />
                         <UserKitchenDetail />
                     </Route>

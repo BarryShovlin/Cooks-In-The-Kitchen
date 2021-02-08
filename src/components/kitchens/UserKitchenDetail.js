@@ -3,7 +3,7 @@ import React, { useEffect, useState, useContext } from "react"
 import { KitchenContext } from "./KitchenProvider"
 import { UserKitchenContext } from "./UserKitchenProvider"
 import "./Kitchen.css"
-import { useHistory, useParams } from "react-router-dom"
+import { useHistory, useParams, Link } from "react-router-dom"
 
  export const UserKitchenDetail = () => {
      const { kitchens, getKitchens, getKitchenById} = useContext(KitchenContext)
@@ -25,6 +25,9 @@ import { useHistory, useParams } from "react-router-dom"
             <h3 className="kitchen_name">{userKitchen.name}</h3>
             <div className="kitchen_address">{userKitchen.address}</div>
             <div className="kitchen_phone">{userKitchen.phone}</div>
+            <li className="navbar__item">
+                <Link className="navbar__link" to="/kitchenRecipes">Recipes</Link>
+            </li>
         </section>
     )
 
