@@ -1,13 +1,16 @@
-import React, { useEffect, useContext } from "react"
+import React, { useEffect, useContext, useState } from "react"
 import {  UserKitchenContext } from "./UserKitchenProvider"
 import { UserKitchenCard } from "./UserKitchenCard"
+import { KitchenContext, KitchenProvider } from "./KitchenProvider"
+import { KitchenCard } from "./KitchenCard"
 
 export const UserKitchenList = () => {
-    const {userKitchens, getUserKitchens} = useContext(UserKitchenContext)
- 
-
+    const {userKitchens, getUserKitchens, getUserKitchenById} = useContext(UserKitchenContext)
+    const {kitchens, getKitchens} = useContext(KitchenContext)
+  
     useEffect(() => {
-      getUserKitchens();
+      getKitchens()
+      .then(getUserKitchens());
   
     }, []);
 
@@ -16,10 +19,13 @@ export const UserKitchenList = () => {
         <h2>Your Kitchens</h2>
         <div className="userkitchens">
         {
+
       userKitchens.map(kitchen => {
+        if (kitchen.userId === localStorage.getItem("kitchen_user")) {
         return <UserKitchenCard key={kitchen.id} kitchen={kitchen} />
-      })
+      }})
     }
+  
             </div>
 
     </>

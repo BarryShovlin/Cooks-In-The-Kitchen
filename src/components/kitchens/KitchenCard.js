@@ -5,24 +5,20 @@ import { KitchenContext } from "./KitchenProvider"
 import { UserKitchenContext } from "./UserKitchenProvider"
 
 export const KitchenCard = ({kitchen}) => {
-    const { kitchens, getKitchensById, getKitchens, addKitchen } = useContext(KitchenContext)
+    const { kitchens, getKitchenById, getKitchens, addKitchen } = useContext(KitchenContext)
     const { addUserKitchen, getUserKitchens } = useContext(UserKitchenContext)
-
+    
   
     const history = useHistory()
 
-    const userKitchen = {
-        userId: parseInt(localStorage.getItem("kitchen_user")),
-        kitchenId: kitchen.id
-    }
+  
 
 
 
-    const handleClickAddKitchen = (event) => {
+    const handleClickDetails = (event) => {
         event.preventDefault()
 
-     
-        addUserKitchen(userKitchen)
+            getKitchenById(kitchen)
             .then(() => history.push(`/kitchen/detail/${kitchen.id}`))
     }
     return (
@@ -30,10 +26,8 @@ export const KitchenCard = ({kitchen}) => {
         <h3 className="kitchen__name">
                 { kitchen.name }
         </h3>
-        <div className="kitchen__address">{kitchen.address}</div>
-        <div className="kitchen__phone">address:{kitchen.address}</div>
-        <button onClick={handleClickAddKitchen}>
-                    Add To Your Kitchens
+        <button onClick={handleClickDetails}>
+                    View Details
                 </button>
 
     </section>

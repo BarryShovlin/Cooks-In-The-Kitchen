@@ -1,20 +1,17 @@
 import React, { useState, useContext, useEffect } from "react";
 import "./Kitchen.css";
-import { useHistory } from "react-router-dom"
+import { useHistory, useParams } from "react-router-dom"
 import { KitchenContext } from "./KitchenProvider"
 import { UserKitchenContext } from "./UserKitchenProvider"
 
 export const UserKitchenCard = ({kitchen}) => {
-    const { kitchens, getKitchensById, getKitchens, addKitchen } = useContext(KitchenContext)
-    const { addUserKitchen, getUserKitchens } = useContext(UserKitchenContext)
+    const { kitchens, getKitchenById, getKitchens, addKitchen } = useContext(KitchenContext)
+    const { addUserKitchen, getUserKitchens, getUserKitchenById } = useContext(UserKitchenContext)
 
   
     const history = useHistory()
 
-    const userKitchen = {
-        userId: parseInt(localStorage.getItem("kitchen_user")),
-        kitchenId: kitchen.id
-    }
+    const userKitchenId = useParams()
 
 
 
@@ -22,7 +19,7 @@ export const UserKitchenCard = ({kitchen}) => {
         event.preventDefault()
 
      
-        addUserKitchen(userKitchen)
+        getKitchenById(userKitchenId)
             .then(() => history.push(`/kitchen/detail/${kitchen.id}`))
     }
     return (
