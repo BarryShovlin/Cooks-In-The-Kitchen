@@ -4,7 +4,7 @@ import { useHistory } from "react-router-dom"
 import { KitchenContext } from "./KitchenProvider"
 import { UserKitchenContext } from "./UserKitchenProvider"
 
-export const userKitchenCard = ({kitchen}) => {
+export const UserKitchenCard = ({kitchen}) => {
     const { kitchens, getKitchensById, getKitchens, addKitchen } = useContext(KitchenContext)
     const { addUserKitchen, getUserKitchens } = useContext(UserKitchenContext)
 

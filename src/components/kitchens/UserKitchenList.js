@@ -1,6 +1,6 @@
 import React, { useEffect, useContext } from "react"
 import {  UserKitchenContext } from "./UserKitchenProvider"
-import { userKitchenCard } from "./UserKitchenCard"
+import { UserKitchenCard } from "./UserKitchenCard"
 
 export const UserKitchenList = () => {
     const {userKitchens, getUserKitchens} = useContext(UserKitchenContext)
@@ -17,7 +17,7 @@ export const UserKitchenList = () => {
         <div className="userkitchens">
         {
       userKitchens.map(kitchen => {
-        return <userKitchenCard key={kitchen.id} kitchen={kitchen} />
+        return <UserKitchenCard key={kitchen.id} kitchen={kitchen} />
       })
     }
             </div>
