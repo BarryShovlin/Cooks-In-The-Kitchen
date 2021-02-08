@@ -3,8 +3,8 @@ import {  RecipeContext } from "./RecipeProvider"
 import { RecipeCard } from "./RecipeCard"
 
 export const RecipeList = () => {
-    const {recipes, getRecipes} = useContext(RecipeContext)
-   
+    const { recipes, getRecipes } = useContext(RecipeContext)
+
 
     useEffect(() => {
       getRecipes()
@@ -23,5 +23,5 @@ export const RecipeList = () => {
             </div>
 
     </>
-      );
+      )
 }

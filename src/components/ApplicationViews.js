@@ -35,7 +35,7 @@ export const ApplicationViews = () => {
             </UserKitchenProvider>
 
             <RecipeProvider>
-                <Route exact path="/recipes)">
+                <Route exact path="/recipes">
                     <RecipeList />
                 </Route>
             </RecipeProvider>

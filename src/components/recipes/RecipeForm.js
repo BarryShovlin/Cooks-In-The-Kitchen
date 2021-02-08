@@ -40,7 +40,6 @@ const handleClickSaveRecipe = (event) => {
     event.preventDefault()
 
     const kitchenId = recipe.kitchenId
-    const userId = recipe.userId
 
     if (kitchenId === 0) {
         window.alert("Please select a kitchen")
@@ -48,4 +47,33 @@ const handleClickSaveRecipe = (event) => {
         addRecipe(recipe)
         .then(() => history.push("/recipes"))
     }
+
+    return (
+        <form className="recipeForm">
+            <h2 className="recipeForm_title"> New Recipe</h2>
+            <fieldset>
+                <div className="form-group">
+                    <label htmlFor="name">Recipe name:</label>
+                    <input type="text" id="name" onChange={handleInputChange} required autoFocus className="form-control" placeholder="Recipe name" value={recipe.name}/>
+                </div>
+            </fieldset>
+            <fieldset>
+                <div className="form-group">
+                    <label htmlFor="ingredients">Ingredients needed:</label>
+                    <input type="text" id="ingredients" onChange={handleInputChange} required autoFocus className="form-control" placeholder="Ingredients" value={recipe.ingredients}/>
+                </div>
+            </fieldset>
+            <fieldset>
+                <div className="form-group">
+                    <label htmlFor="description">Instructions:</label>
+                    <input type="text" id="description" onChange={handleInputChange} required autoFocus className="form-control" placeholer="Instructions" value={recipe.instructions}/>
+                </div>
+            </fieldset>
+            <fieldset>
+                <div className=""
+            </fieldset>
+
+
+        </form>
+    )
 }
