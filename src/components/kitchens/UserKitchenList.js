@@ -2,8 +2,7 @@ import React, { useEffect, useContext, useState } from "react"
 import {  UserKitchenContext } from "./UserKitchenProvider"
 import { UserKitchenCard } from "./UserKitchenCard"
 import { KitchenContext, KitchenProvider } from "./KitchenProvider"
-import { KitchenCard } from "./KitchenCard"
-import { UserKitchenDetail } from "./UserKitchenDetail"
+
 
 export const UserKitchenList = () => {
     const {userKitchens, getUserKitchens, getUserKitchenById} = useContext(UserKitchenContext)

@@ -12,7 +12,7 @@ export const RecipeProvider = (props) => {
         .then(setRecipes)
     }
     const getRecipeById = (id) => {
-        return fetch(`http://localhost:8088/recipes/${id}?expand=ekitchens`)
+        return fetch(`http://localhost:8088/recipes/${id}?expand=kitchen`)
         .then(res => res.json())
     }
 
