@@ -3,6 +3,7 @@ import {  UserKitchenContext } from "./UserKitchenProvider"
 import { UserKitchenCard } from "./UserKitchenCard"
 import { KitchenContext, KitchenProvider } from "./KitchenProvider"
 import { KitchenCard } from "./KitchenCard"
+import { UserKitchenDetail } from "./UserKitchenDetail"
 
 export const UserKitchenList = () => {
     const {userKitchens, getUserKitchens, getUserKitchenById} = useContext(UserKitchenContext)
@@ -14,17 +15,21 @@ export const UserKitchenList = () => {
   
     }, []);
 
+    const currentUser =  parseInt(localStorage.getItem("kitchen_user"))
+    const currentUserKitchen = userKitchens.filter(kitch => kitch.userId === currentUser)
+  
       return (
         <>
         <h2>Your Kitchens</h2>
         <div className="userkitchens">
-        {
-
-      userKitchens.map(kitchen => {
-        if (kitchen.userId === localStorage.getItem("kitchen_user")) {
-        return <UserKitchenCard key={kitchen.id} kitchen={kitchen} />
-      }})
-    }
+    {
+     
+      currentUserKitchen.map(kitchen => {
+        return <UserKitchenCard key={kitchen.id} userKitchen={kitchen} />
+        
+      })
+      
+      }
   
             </div>
 

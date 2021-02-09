@@ -14,6 +14,16 @@ import { KitchenDetail } from "./KitchenDetail"
 
     const [userKitchen, setUserKitchens] = useState({})
     const [kitchen] = useState({})
+
+    const userKitchenId = useParams()
+
+    const handleClickRecipeView = (event) => {
+        event.preventDefault()
+
+
+        getKitchenById(userKitchenId)
+            .then(() => history.push(`/kitchen/detail/${userKitchen.id}`))
+    }
  
 
     useEffect(() => {
@@ -23,14 +33,17 @@ import { KitchenDetail } from "./KitchenDetail"
 
 
     return (
-        <section className="kitchens">
-            <h3 className="kitchen_name">{kitchen.name}</h3>
-            <div className="kitchen_address">{kitchen.address}</div>
-            <div className="kitchen_phone">{kitchen.phone}</div>
-            <li className="navbar__item">
-                <Link className="navbar__link" to="/kitchenRecipes">Recipes</Link>
-            </li>
+        <section className="kitchen">
+            <h3 className="kitchen__name">
+                {kitchen.kitchen?.name}
+            </h3>
+            <div className="kitchen__address">{kitchen.kitchen?.address}</div>
+            <div className="kitchen__phone">address:{kitchen.kitchen?.phone}</div>
+            <button onClick={handleClickRecipeView}>
+                <Link className="navbar__link" to="/kitchenRecipes">Check out the recipes</Link>
+
+            </button>
+
         </section>
     )
-
 }
