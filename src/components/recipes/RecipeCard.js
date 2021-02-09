@@ -25,7 +25,6 @@ export const RecipeCard = ({recipe}) => {
                 { recipe.name }
         </h3>
         <div className="recipe__description">{recipe.description}</div>
-        <div className="price">price: {recipe.price}</div>
         <button>
                 <Link to={`/recipes/detail/${recipe.id}`}>
                     View Full Recipe

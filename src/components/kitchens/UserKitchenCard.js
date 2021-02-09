@@ -8,9 +8,11 @@ import { RecipeContext } from "../recipes/RecipeProvider"
 export const UserKitchenCard = ({ userKitchen }) => {
     const { kitchens, getKitchenById, getKitchens, addKitchen } = useContext(KitchenContext)
     const { addUserKitchen, getUserKitchens, getUserKitchenById } = useContext(UserKitchenContext)
-    const { getRecipeById, getRecipes } = useContext(RecipeContext)
+    const { recipes, getRecipeById, getRecipes } = useContext(RecipeContext)
 
     const history = useHistory()
+
+    const [recipe, setRecipe] = useState({})
 
     const userRecipeId = useParams()
 
@@ -19,9 +21,8 @@ export const UserKitchenCard = ({ userKitchen }) => {
     const handleClickRecipeView = (event) => {
         event.preventDefault()
 
-
-        getRecipeById(userRecipeId)
-            .then(() => history.push(`/recipe/detail/${userKitchen.id}`))
+        getRecipes()
+            .then(() => history.push("/recipes/"))
     }
 
 
@@ -33,10 +34,7 @@ export const UserKitchenCard = ({ userKitchen }) => {
             </h3>
             <div className="kitchen__address">{userKitchen.kitchen.address}</div>
             <div className="kitchen__phone">address:{userKitchen.kitchen.phone}</div>
-            <button onClick={handleClickRecipeView}>
-                <Link className="UserKitchen_recipes" to="/recipes">Check out the recipes</Link>
-
-            </button>
+            <button onClick={handleClickRecipeView}>Check out the recipes </button>
 
         </section>
     );
