@@ -6,7 +6,7 @@ import { KitchenContext, KitchenProvider } from "./KitchenProvider"
 
 export const UserKitchenList = () => {
     const {userKitchens, getUserKitchens, getUserKitchenById} = useContext(UserKitchenContext)
-    const {kitchens, getKitchens} = useContext(KitchenContext)
+    const { getKitchens } = useContext(KitchenContext)
   
     useEffect(() => {
       getKitchens()
