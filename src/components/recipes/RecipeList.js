@@ -17,16 +17,16 @@ const [userKitchen, setUserKitchen] = useState({})
     }, []);
 
     const currentUser =  parseInt(localStorage.getItem("kitchen_user"))
-    const currentUserKitchen = userKitchens.filter(kitch => kitch.userId === currentUser)
-    const currentKitchenRecipes = recipes.filter(reci => reci.kitchenId === currentUserKitchen)
+    const currentUserKitchens = userKitchens.filter(kitch => kitch.userId === currentUser)
+    
 
-    console.log(currentKitchenRecipes)
+
       return (
         <>
         <h2>check Out The Recipes</h2>
         <div className="recipes">
         {
-      currentKitchenRecipes.map(recipe => {
+      currentUserKitchens.map(recipe => {
         return <RecipeCard key={recipe.id} recipe={recipe} />
       })
     }

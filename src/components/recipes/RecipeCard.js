@@ -14,7 +14,7 @@ export const RecipeCard = ({recipe}) => {
     const history = useHistory()
 
     useEffect(() => {
-        getRecipeById(recipeId)
+        getRecipes()
         .then(setRecipes)
     }, [])
 

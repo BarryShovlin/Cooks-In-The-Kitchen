@@ -8,7 +8,7 @@ import { KitchenDetail } from "./KitchenDetail"
 
  export const UserKitchenDetail = () => {
      const { kitchens, getKitchens, getKitchenById} = useContext(KitchenContext)
-     const { userKitchens, getUserKitchens, getUserKitchenById} = useContext(UserKitchenContext)
+     const { userKitchens, getUserKitchens, getUserKitchenById, deleteUserKitchen} = useContext(UserKitchenContext)
 
     const history = useHistory()
 
@@ -16,6 +16,8 @@ import { KitchenDetail } from "./KitchenDetail"
     const [kitchen] = useState({})
 
     const userKitchenId = useParams()
+
+    
 
     const handleClickRecipeView = (event) => {
         event.preventDefault()
@@ -43,6 +45,7 @@ import { KitchenDetail } from "./KitchenDetail"
                 <Link className="navbar__link" to="/kitchenRecipes">Check out the recipes</Link>
 
             </button>
+        
 
         </section>
     )

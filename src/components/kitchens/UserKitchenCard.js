@@ -7,7 +7,7 @@ import { RecipeContext } from "../recipes/RecipeProvider"
 
 export const UserKitchenCard = ({ userKitchen }) => {
     const { kitchens, getKitchenById, getKitchens, addKitchen } = useContext(KitchenContext)
-    const { addUserKitchen, getUserKitchens, getUserKitchenById } = useContext(UserKitchenContext)
+    const { addUserKitchen, getUserKitchens, getUserKitchenById, deleteUserKitchen } = useContext(UserKitchenContext)
     const { recipes, getRecipeById, getRecipes } = useContext(RecipeContext)
 
     const history = useHistory()
@@ -16,6 +16,12 @@ export const UserKitchenCard = ({ userKitchen }) => {
 
     const userRecipeId = useParams()
 
+    const handleDeleteUserKitchen = () => {
+        deleteUserKitchen(userKitchen.id)
+        .then(() => {
+            history.push("/userKitchens")
+        })
+    }
 
 
     const handleClickRecipeView = (event) => {
@@ -35,6 +41,7 @@ export const UserKitchenCard = ({ userKitchen }) => {
             <div className="kitchen__address">{userKitchen.kitchen.address}</div>
             <div className="kitchen__phone">address:{userKitchen.kitchen.phone}</div>
             <button onClick={handleClickRecipeView}>Check out the recipes </button>
+            <button onClick={handleDeleteUserKitchen}>Remove From Your Kitchens</button>
 
         </section>
     );
