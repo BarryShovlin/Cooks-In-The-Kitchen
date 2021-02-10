@@ -35,6 +35,9 @@ export const ApplicationViews = () => {
                         <Route exact path="/recipes/detail/:userKitchenId(\d+)">
                             <RecipeList />
                         </Route>
+                        <Route exact path="recipes/detail/:recipeId(\d+)">
+                            <RecipeDetail />
+                        </Route>
                     </RecipeProvider>
                 </KitchenProvider>
             </UserKitchenProvider>

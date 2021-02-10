@@ -8,6 +8,8 @@ export const RecipeDetail = () => {
 
     const [ recipe, setRecipe ] = useState({})
 
+    const {recipeId} = useParams()
+
  
     return (
         <section className="recipe">
