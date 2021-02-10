@@ -1,8 +1,9 @@
 import React, { useEffect, useContext, useState } from "react"
-import { useParams } from "react-router-dom"
+import { useParams, Link } from "react-router-dom"
 import {  RecipeContext } from "./RecipeProvider"
 import { RecipeCard } from "./RecipeCard"
 import { UserKitchenContext } from "../kitchens/UserKitchenProvider"
+import { RecipeForm } from './RecipeForm'
 
 export const RecipeList = () => {
     const { recipes, getRecipes } = useContext(RecipeContext)
@@ -35,6 +36,11 @@ console.log(kitchenRessie)
       })
     }
             </div>
+            <button>
+                <Link to={"/recipes/detail/addRecipe"}>
+                    Add a new recipe
+                </Link>
+            </button>
 
     </>
       )

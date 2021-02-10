@@ -5,11 +5,12 @@ import "./Recipe.css"
 import { useHistory } from "react-router-dom"
 
 
+
 export const RecipeForm = () => {
-    const { addRecipe } = useContext(RecipeContext)
+    const { addRecipe, getRecipes } = useContext(RecipeContext)
     const { kitchens, getKitchens } = useContext(KitchenContext)
 
-
+const [kitchen, setKitchen] = useState([])
     const [recipe, setRecipe] = useState({
         name: "",
         description: "",
@@ -17,20 +18,20 @@ export const RecipeForm = () => {
         kitchenId: 0,
         price: ""
     })
-}
+
 
 const history = useHistory()
 
 useEffect(() => {
     getRecipes()
-    .then(getKitchens)
+        .then(getKitchens)
 })
 
 const handleInputChange = (event) => {
-    const newRecipe = {...recipe }
+    const newRecipe = { ...recipe }
     let selectedVal = event.target.value
     if (event.target.id.includes("Id")) {
-        selectedVale = parseInt(selectedVal)
+        selectedVal = parseInt(selectedVal)
     }
     newRecipe[event.target.id] = selectedVal
     setRecipe(newRecipe)
@@ -45,8 +46,9 @@ const handleClickSaveRecipe = (event) => {
         window.alert("Please select a kitchen")
     } else {
         addRecipe(recipe)
-        .then(() => history.push("/recipes"))
+            .then(() => history.push("/recipes"))
     }
+}
 
     return (
         <form className="recipeForm">
@@ -54,24 +56,41 @@ const handleClickSaveRecipe = (event) => {
             <fieldset>
                 <div className="form-group">
                     <label htmlFor="name">Recipe name:</label>
-                    <input type="text" id="name" onChange={handleInputChange} required autoFocus className="form-control" placeholder="Recipe name" value={recipe.name}/>
+                    <input type="text" id="name" onChange={handleInputChange} required autoFocus className="form-control" placeholder="Recipe name" value={recipe.name} />
                 </div>
             </fieldset>
             <fieldset>
                 <div className="form-group">
                     <label htmlFor="ingredients">Ingredients needed:</label>
-                    <input type="text" id="ingredients" onChange={handleInputChange} required autoFocus className="form-control" placeholder="Ingredients" value={recipe.ingredients}/>
+                    <input type="text" id="ingredients" onChange={handleInputChange} required autoFocus className="form-control" placeholder="Ingredients" value={recipe.ingredients} />
+                </div>
+            </fieldset>
+            <fieldset>
+              <div className="form-group">
+                  <label htmlFor="kitcheb">Assign to Kitchen: </label>
+                  <select defaultValue={kitchen.id} name="kitchenId" id="kitchenId" onChange={handleInputChange} className="form-control" >
+                      <option value="0">Select a kitchen</option>
+                      {kitchens.map(k => (
+                          <option key={k.id} value={k.id}>
+                              {k.name}
+                          </option>
+                      ))}
+                  </select>
+              </div>
+          </fieldset>
+            <fieldset>
+                <div className="form-group">
+                    <label htmlFor="description">Instructions:</label>
+                    <input type="text" id="description" onChange={handleInputChange} required autoFocus className="form-control" placeholer="Instructions" value={recipe.instructions} />
                 </div>
             </fieldset>
             <fieldset>
                 <div className="form-group">
-                    <label htmlFor="description">Instructions:</label>
-                    <input type="text" id="description" onChange={handleInputChange} required autoFocus className="form-control" placeholer="Instructions" value={recipe.instructions}/>
+                    <label htmlFor="price">Price:</label>
+                    <input type="text" id="price" onChange={handleInputChange} require autoFocus clasName="form-control" placeholder="Price" value={recipe.price} />
                 </div>
             </fieldset>
-            <fieldset>
-                <div className=""
-            </fieldset>
+            <button onClick={handleClickSaveRecipe}>Save This Recipe</button>
 
 
         </form>
