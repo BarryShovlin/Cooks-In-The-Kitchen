@@ -1,14 +1,20 @@
 import React, { useContext, useEffect, useState } from "react"
 import { KitchenContext } from "../kitchens/KitchenProvider"
+import { UserKitchenContext } from "../kitchens/UserKitchenProvider"
 import { RecipeContext } from "./RecipeProvider"
 import "./Recipe.css"
-import { useHistory } from "react-router-dom"
+import { useHistory, useParams } from "react-router-dom"
 
 
 
 export const RecipeForm = () => {
     const { addRecipe, getRecipes } = useContext(RecipeContext)
     const { kitchens, getKitchens } = useContext(KitchenContext)
+    const { userKitchens, getUserKitchenById } = useContext(UserKitchenContext)
+
+    const [userKitchen, setUserKitchen] = useState({})
+
+    const {userKitchenId} = useParams()
 
 const [kitchen, setKitchen] = useState([])
     const [recipe, setRecipe] = useState({
@@ -25,7 +31,7 @@ const history = useHistory()
 useEffect(() => {
     getRecipes()
         .then(getKitchens)
-})
+}, [])
 
 const handleInputChange = (event) => {
     const newRecipe = { ...recipe }
@@ -46,7 +52,7 @@ const handleClickSaveRecipe = (event) => {
         window.alert("Please select a kitchen")
     } else {
         addRecipe(recipe)
-            .then(() => history.push("/recipes"))
+            .then(() => history.push((`/userKitchens`)))
     }
 }
 
@@ -87,7 +93,7 @@ const handleClickSaveRecipe = (event) => {
             <fieldset>
                 <div className="form-group">
                     <label htmlFor="price">Price:</label>
-                    <input type="text" id="price" onChange={handleInputChange} require autoFocus clasName="form-control" placeholder="Price" value={recipe.price} />
+                    <input type="text" id="price" onChange={handleInputChange} require autoFocus className="form-control" placeholder="Price" value={recipe.price} />
                 </div>
             </fieldset>
             <button onClick={handleClickSaveRecipe}>Save This Recipe</button>
@@ -95,4 +101,5 @@ const handleClickSaveRecipe = (event) => {
 
         </form>
     )
+    
 }

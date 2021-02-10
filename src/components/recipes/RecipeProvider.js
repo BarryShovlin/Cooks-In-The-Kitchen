@@ -16,9 +16,20 @@ export const RecipeProvider = (props) => {
         .then(res => res.json())
     }
 
+    const addRecipe = (recipeObj) => {
+        return fetch("http://localhost:8088/recipes", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify(recipeObj)
+        })
+        .then(getRecipes)
+    }
+
     return (
         <RecipeContext.Provider value={{
-            recipes, getRecipes, getRecipeById
+            recipes, getRecipes, getRecipeById, addRecipe
         }}>
         {props.children}
         </RecipeContext.Provider>
