@@ -28,7 +28,7 @@ export const UserKitchenCard = ({ userKitchen }) => {
         event.preventDefault()
 
         getRecipes()
-            .then(() => history.push(`/recipes/detail/${userKitchen.id}`))
+            .then(() => history.push(`/userKitchen/detail/${userKitchen.id}`))
     }
 
 

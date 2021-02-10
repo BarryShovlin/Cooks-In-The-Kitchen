@@ -32,10 +32,10 @@ export const ApplicationViews = () => {
                             <UserKitchenList />
                         </Route>
 
-                        <Route exact path="/recipes/detail/:userKitchenId(\d+)">
+                        <Route exact path="/userKitchen/detail/:userKitchenId(\d+)">
                             <RecipeList />
                         </Route>
-                        <Route exact path="recipes/detail/:recipeId(\d+)">
+                        <Route exact path="/recipes/detail/:recipeId(\d+)">
                             <RecipeDetail />
                         </Route>
                     </RecipeProvider>

@@ -10,12 +10,19 @@ export const RecipeDetail = () => {
 
     const {recipeId} = useParams()
 
- 
+    useEffect(() => {
+        getRecipeById(recipeId)
+        .then((response) => {
+            setRecipe(response)
+        })
+    }, [])
+
     return (
         <section className="recipe">
             <h3 className="recipe_name">{recipe.name}</h3>
             <div classname="recipe_description">{recipe.description}</div>
             <div className="recipe_price">{recipe.price}</div>
+            <div className="recipe_notes">{recipe.note}</div>
         </section>
     )
 }
