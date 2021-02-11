@@ -17,14 +17,14 @@ export const RecipeForm = () => {
 
     const [ingredient, setIngredient] = useState({})
 
-    const {userKitchenId} = useParams()
+    const {kitchenId} = useParams()
 
 const [kitchen, setKitchen] = useState([])
     const [recipe, setRecipe] = useState({
         name: "",
         description: "",
-        userId: 0,
-        kitchenId: 0,
+        userId: parseInt(localStorage.getItem("kitchen_user")),
+        kitchenId: parseInt(kitchenId),
         price: ""
     })
 
@@ -46,25 +46,13 @@ const handleInputChange = (event) => {
     setRecipe(newRecipe)
 }
 
-const currentRecipeNoteText = (note) => {
-    if(note.recipeId === recipe.id) {
-        return (
-             `${note.text}`
-        )
-    }
-}
+
 
 const handleClickSaveRecipe = (event) => {
     event.preventDefault()
 
-    const kitchenId = recipe.kitchenId
-
-    if (kitchenId === 0) {
-        window.alert("Please select a kitchen")
-    } else {
         addRecipe(recipe)
-            .then(() => history.push((`/userKitchens`)))
-    }
+            .then(() => history.push(`/userKitchen/detail/${kitchenId}`))
 }
 
     return (
@@ -77,34 +65,11 @@ const handleClickSaveRecipe = (event) => {
                 </div>
             </fieldset>
             <fieldset>
-              <div className="form-group">
-                  <label htmlFor="kitchen">Assign to Kitchen: </label>
-                  <select defaultValue={kitchen.id} name="kitchenId" id="kitchenId" onChange={handleInputChange} className="form-control" >
-                      <option value="0">Select a kitchen</option>
-                      {kitchens.map(k => (
-                          <option key={k.id} value={k.id}>
-                              {k.name}
-                          </option>
-                      ))}
-                  </select>
-              </div>
-          </fieldset>
-            <fieldset>
                 <div className="form-group">
                     <label htmlFor="description">Description:</label>
                     <input type="text" id="description" onChange={handleInputChange} required autoFocus className="form-control" placeholer="Instructions" value={recipe.description} />
                 </div>
             </fieldset>
-            <div className="recipe_ingredients">Ingredients:
-            { ingredients.map(i => {
-                return <IngredientCard key={ingredient.id} ingredient={ingredient} />
-            })}
-            </div>
-            <div className="recipe_notes">{currentRecipeNoteText}</div>
-            
-            <button>
-                <Link to={"/recipes/detail/addIngredient"}>Add Ingredients</Link>
-            </button>
             <fieldset>
                 <div className="form-group">
                     <label htmlFor="price">Price:</label>

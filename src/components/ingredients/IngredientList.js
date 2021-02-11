@@ -12,8 +12,8 @@ export const IngredientList = () => {
   const {userKitchenId} = useParams()
   const [userKitchen, setUserKitchen] = useState({})
   const [recipe, setRecipe] = useState({})
+  const [ingredient, setIngredient] = useState({})
 
-console.log(userKitchenId)
 
     useEffect(() => {
       getUserKitchenById(userKitchenId)
@@ -27,17 +27,30 @@ console.log(userKitchenId)
    
     const recipeIngredients = ingredients.filter(i => i.recipeId === recipe.id)
 
-
+    const currentRecipeNoteText = (note) => {
+        if(note.recipeId === recipe.id) {
+            return (
+                 `${note.text}`
+            )
+        }
+    }
 
       return (
         <>
-        <div className="ingredients">Ingredients:</div>
+        <div className="recipe_ingredients">Ingredients:
+            { ingredients.map(i => {
+                return <IngredientCard key={ingredient.id} ingredient={ingredient} />
+            })}
+            </div>
+            <div className="recipe_notes">{currentRecipeNoteText}</div>
+        
         <div className="recipes">
         {
       recipeIngredients.map(ingredient => {
         return <IngredientCard key={ingredient.id} note={ingredient} />
       })
     }
+    
             </div>
 
     </>

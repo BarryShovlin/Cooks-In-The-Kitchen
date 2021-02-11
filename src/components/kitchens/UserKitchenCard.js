@@ -20,18 +20,11 @@ export const UserKitchenCard = ({ userKitchen }) => {
     }
 
 
-    const handleClickRecipeView = (event) => {
-        event.preventDefault()
-
-        getRecipes()
-            .then(() => history.push(`/userKitchen/detail/${userKitchen.id}`))
-    }
-
     const handleClickEmployeeInfo = (event) => {
         event.preventDefault()
         
         getEmployees()
-            .then(() => history.push(`employees/detail/${userKitchen.id}`) )
+            .then(() => history.push(`employees/detail/${userKitchen.kitchenId}`) )
     }
 
 
@@ -43,7 +36,7 @@ export const UserKitchenCard = ({ userKitchen }) => {
             </h3>
             <div className="kitchen__address">{userKitchen.kitchen.address}</div>
             <div className="kitchen__phone">address:{userKitchen.kitchen.phone}</div>
-            <button onClick={handleClickRecipeView}>Check out the recipes </button>
+            <button onClick={() => history.push(`/userKitchen/detail/${userKitchen.kitchenId}`)}>Check out the recipes </button>
             <button onClick={handleClickEmployeeInfo}>Team Info</button>
             <button onClick={handleDeleteUserKitchen}>Remove From Your Kitchens</button>
             

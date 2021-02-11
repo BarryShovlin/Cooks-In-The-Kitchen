@@ -4,7 +4,7 @@ import { UserKitchenContext } from "../kitchens/UserKitchenProvider"
 import "./Recipe.css"
 import { useParams, useHistory, Link } from "react-router-dom"
 import { NoteContext } from "../notes/NoteProvider"
-import { NoteCard } from "../notes/NoteCard"
+import { IngredientCard } from "../ingredients/IngredientCard"
 import { IngredientList } from "../ingredients/IngredientList"
 import { IngredientContext } from "../ingredients/IngredientProvider"
 
@@ -43,13 +43,17 @@ const handleDeleteRecipe = () => {
 
 
 
-
     return (
         <section className="recipe">
             <h3 className="recipe_name">{recipe.name}</h3>
             <div className="recipe_description">{recipe.description}</div>
             <IngredientList />
             <div className="recipe_price">price: {recipe.price}</div>
+            
+            
+            <button>
+                <Link to={`/recipes/${recipeId}/addIngredient`}>Add Ingredients</Link>
+            </button>
             <button>
             <Link to={"/recipes/detail/addNote"}>
                     Add a Note

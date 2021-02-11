@@ -11,7 +11,6 @@ export const NoteList = () => {
   const {userKitchenId} = useParams()
   const [userKitchen, setUserKitchen] = useState({})
 
-console.log(userKitchenId)
 
     useEffect(() => {
       getUserKitchenById(userKitchenId)
@@ -24,7 +23,7 @@ console.log(userKitchenId)
 
    
     const recipeNotes = notes.filter(n => n.kitchenId === userKitchen.kitchenId)
-console.log(recipeNotes)
+
 
 
       return (

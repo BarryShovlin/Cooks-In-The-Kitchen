@@ -2,29 +2,26 @@ import React, { useEffect, useContext, useState } from "react"
 import { useParams, Link } from "react-router-dom"
 import {  RecipeContext } from "./RecipeProvider"
 import { RecipeCard } from "./RecipeCard"
-import { UserKitchenContext } from "../kitchens/UserKitchenProvider"
+import { KitchenContext } from "../kitchens/KitchenProvider"
 import { RecipeForm } from './RecipeForm'
 
 export const RecipeList = () => {
     const { recipes, getRecipes } = useContext(RecipeContext)
-    const { userKitchens, getUserKitchens, getUserKitchenById} = useContext(UserKitchenContext)
-  const {userKitchenId} = useParams()
-  const [userKitchen, setUserKitchen] = useState({})
+    const { kitchens, getKitchens, getKitchenById} = useContext(KitchenContext)
+  const {kitchenId} = useParams()
+  const [kitchen, setKitchen] = useState({})
 
 
 
     useEffect(() => {
-      getUserKitchenById(userKitchenId)
-      .then((response) => {
-        setUserKitchen(response)
-      })
-      .then(getRecipes())
+      getKitchenById(kitchenId)
+      .then(setKitchen)
+      .then(getRecipes)
   
     }, []);
 
-   
-    const kitchenRessie = recipes.filter(recipe => recipe.kitchenId === userKitchen.kitchenId)
-console.log(kitchenRessie)
+    const kitchenRessie = recipes.filter(recipe => recipe.kitchenId === parseInt(kitchenId))
+
 
       return (
         <>
@@ -37,7 +34,7 @@ console.log(kitchenRessie)
     }
             </div>
             <button>
-                <Link to={"/recipes/detail/addRecipe"}>
+                <Link to={`/recipes/detail/addRecipe/${kitchenId}`}>
                     Add a new recipe
                 </Link>
             </button>

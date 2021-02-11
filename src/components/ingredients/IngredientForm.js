@@ -9,12 +9,12 @@ import { useHistory, useParams } from "react-router-dom"
 export const IngredientForm = () => {
     const { addIngredient, getIngredients} = useContext(IngredientContext)
     const {recipes, getRecipes} = useContext(RecipeContext)
-
-    const [recipe, setRecipe] = useState([])
+const {recipeId} = useParams()
+    const [recipe, setRecipe] = useState({})
     const [ingredient, setIngredients] = useState({
         name: "",
         amount: "",
-        recipeId: 0
+        recipeId: recipeId
     })
 
     const history = useHistory()
@@ -33,12 +33,12 @@ export const IngredientForm = () => {
         newIngredient[event.target.id] = selectedVal
         setIngredients(newIngredient)
     }
-
+console.log(ingredient)
     const handleClickSaveIngredient = (event) => {
         event.preventDefault()
     
             addIngredient(ingredient) 
-                .then(() => history.push((`/recipes/${recipe.id}`)))
+                .then(() => history.push((`/recipes/detail/${recipeId}`)))
         }
         return (
             <form className="ingredientForm">
@@ -55,19 +55,6 @@ export const IngredientForm = () => {
                     <input type="text" id="amount" onChange={handleInputChange} required autoFocus className="form-control" placeholder="Write your note here" value={ingredient.amount} />
                 </div>
             </fieldset>
-            <fieldset>
-              <div className="form-group">
-                  <label htmlFor="note">Assign to a Recipe: </label>
-                  <select defaultValue={recipe.id} name="recipeId" id="recipeId" onChange={handleInputChange} className="form-control" >
-                      <option value="0">Select a recipe</option>
-                      {recipes.map(r => (
-                          <option key={r.id} value={r.id}>
-                              {r.name}
-                          </option>
-                      ))}
-                  </select>
-              </div>
-          </fieldset>
           <button onClick={handleClickSaveIngredient}>Add To The Recipe</button>
             </form>
         )

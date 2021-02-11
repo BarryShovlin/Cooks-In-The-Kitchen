@@ -44,14 +44,14 @@ export const ApplicationViews = () => {
                                 <UserKitchenList />
                             </Route>
 
-                            <Route exact path="/userKitchen/detail/:userKitchenId(\d+)">
+                            <Route exact path="/userKitchen/detail/:kitchenId(\d+)">
                                 <RecipeList />
                             </Route>
                             <Route exact path="/recipes/detail/:recipeId(\d+)">
                                 <RecipeDetail />
                                 <NoteList />
                             </Route>
-                            <Route exact path="/recipes/detail/addRecipe">
+                            <Route exact path="/recipes/detail/addRecipe/:kitchenId(\d+)">
                                 <RecipeForm />
                             </Route>
                             <Route exact path="/employees/detail/:userKitchenId(\d+)">
@@ -60,7 +60,7 @@ export const ApplicationViews = () => {
                             <Route exact path="/recipes/detail/addNote">
                                 <NoteForm />
                             </Route>
-                            <Route exact path="/recipes/detail/addIngredient">
+                            <Route exact path="/recipes/:recipeId(\d+)/addIngredient">
                                 <IngredientForm />
                             </Route>
 
