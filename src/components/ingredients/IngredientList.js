@@ -39,7 +39,7 @@ export const IngredientList = () => {
         <>
         <div className="recipe_ingredients">Ingredients:
             { ingredients.map(i => {
-                return <IngredientCard key={ingredient.id} ingredient={ingredient} />
+                return <IngredientCard key={i.id} ingredient={i} />
             })}
             </div>
             <div className="recipe_notes">{currentRecipeNoteText}</div>
