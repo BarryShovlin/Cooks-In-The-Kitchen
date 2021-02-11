@@ -13,6 +13,9 @@ import { UserKitchenList } from "./kitchens/UserKitchenList"
 import { RecipeForm } from "./recipes/RecipeForm"
 import { EmployeeList } from "./Employees/EmployeeList"
 import { EmployeeProvider } from "./Employees/EmployeeProvider"
+import { NoteProvider } from "./notes/NoteProvider"
+import { NoteForm } from "./notes/NoteForm"
+import { NoteList } from "./notes/NoteList"
 
 export const ApplicationViews = () => {
     return (
@@ -29,6 +32,7 @@ export const ApplicationViews = () => {
                 <KitchenProvider>
                     <RecipeProvider>
                         <EmployeeProvider>
+                            <NoteProvider>
                             <Route exact path="/kitchen/detail/:kitchenId(\d+)">
                                 <KitchenDetail />
                             </Route>
@@ -41,6 +45,7 @@ export const ApplicationViews = () => {
                             </Route>
                             <Route exact path="/recipes/detail/:recipeId(\d+)">
                                 <RecipeDetail />
+                                <NoteList />
                             </Route>
                             <Route exact path="/recipes/detail/addRecipe">
                                 <RecipeForm />
@@ -48,6 +53,11 @@ export const ApplicationViews = () => {
                             <Route exact path="/employees/detail/:userKitchenId(\d+)">
                                 <EmployeeList />
                             </Route>
+                            <Route exact path="/recipes/detail/addNote">
+                                <NoteForm />
+                            </Route>
+                        
+                            </NoteProvider>
                         </EmployeeProvider>
                     </RecipeProvider>
                 </KitchenProvider>

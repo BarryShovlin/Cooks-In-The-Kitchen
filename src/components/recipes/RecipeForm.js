@@ -73,7 +73,7 @@ const handleClickSaveRecipe = (event) => {
             </fieldset>
             <fieldset>
               <div className="form-group">
-                  <label htmlFor="kitcheb">Assign to Kitchen: </label>
+                  <label htmlFor="kitchen">Assign to Kitchen: </label>
                   <select defaultValue={kitchen.id} name="kitchenId" id="kitchenId" onChange={handleInputChange} className="form-control" >
                       <option value="0">Select a kitchen</option>
                       {kitchens.map(k => (
@@ -86,8 +86,8 @@ const handleClickSaveRecipe = (event) => {
           </fieldset>
             <fieldset>
                 <div className="form-group">
-                    <label htmlFor="description">Instructions:</label>
-                    <input type="text" id="description" onChange={handleInputChange} required autoFocus className="form-control" placeholer="Instructions" value={recipe.instructions} />
+                    <label htmlFor="description">Description:</label>
+                    <input type="text" id="description" onChange={handleInputChange} required autoFocus className="form-control" placeholer="Instructions" value={recipe.description} />
                 </div>
             </fieldset>
             <fieldset>

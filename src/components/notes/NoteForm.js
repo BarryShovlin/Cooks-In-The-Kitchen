@@ -1,17 +1,19 @@
 import React, { useContext, useEffect, useState } from "react"
 import { NoteContext } from "./NoteProvider"
-import { RecipeContext } from "./RecipeProvider"
-import "./Recipe.css"
+import { RecipeContext } from "../recipes/RecipeProvider"
+import "./Notes.css"
 import { useHistory, useParams } from "react-router-dom"
 
 
 
 export const NoteForm = () => {
     const { addNote, getNotes} = useContext(NoteContext)
+    const {recipes, getRecipes} = useContext(RecipeContext)
 
+    const [recipe, setRecipe] = useState([])
     const [note, setNotes] = useState({
         text: "",
-        userId: 0,
+        userId: parseInt(localStorage.getItem("kitchen_user")),
         recipeId: 0
     })
 
@@ -19,7 +21,7 @@ export const NoteForm = () => {
 
     useEffect(() => {
         getNotes()
-            .then(setNotes)
+        .then(getRecipes())
     }, [])
 
     const handleInputChange = (event) => {
@@ -29,20 +31,43 @@ export const NoteForm = () => {
             selectedVal = parseInt(selectedVal)
         }
         newNote[event.target.id] = selectedVal
-        setNote(newNote)
+        setNotes(newNote)
     }
 
     const handleClickSaveNote = (event) => {
         event.preventDefault()
     
-        const RecipeId = note.RecipeId
-    
-        if (RecipeId === 0) {
-            window.alert("Please select a recipe")
-        } else {
-            addNote(note)
-                .then(() => history.push((`/notes`)))
+            addNote(note) 
+                .then(() => history.push((`/userKitchens`)))
         }
-    }
+    
+
+    return (
+        <form className="noteForm">
+            <h2 className="noteForm_title"> Recipe Notes</h2>
+            <fieldset>
+                <div className="form-group">
+                    <label htmlFor="text">Instructions:</label>
+                    <input type="text" id="text" onChange={handleInputChange} required autoFocus className="form-control" placeholder="Write your note here" value={note.text} />
+                </div>
+            </fieldset>
+            <fieldset>
+              <div className="form-group">
+                  <label htmlFor="note">Assign to a Recipe: </label>
+                  <select defaultValue={recipe.id} name="recipeId" id="recipeId" onChange={handleInputChange} className="form-control" >
+                      <option value="0">Select a recipe</option>
+                      {recipes.map(r => (
+                          <option key={r.id} value={r.id}>
+                              {r.name}
+                          </option>
+                      ))}
+                  </select>
+              </div>
+          </fieldset>
+            <button onClick={handleClickSaveNote}>Save This Note</button>
+
+            </form>
+
+            )
 
 }
