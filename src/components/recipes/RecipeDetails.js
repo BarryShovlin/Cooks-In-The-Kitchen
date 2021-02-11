@@ -5,13 +5,17 @@ import "./Recipe.css"
 import { useParams, useHistory, Link } from "react-router-dom"
 import { NoteContext } from "../notes/NoteProvider"
 import { NoteCard } from "../notes/NoteCard"
+import { IngredientList } from "../ingredients/IngredientList"
+import { IngredientContext } from "../ingredients/IngredientProvider"
 
 export const RecipeDetail = () => {
     const { getRecipeById, deleteRecipe } = useContext(RecipeContext)
     const { userKitchens, getUserKitchens } = useContext(UserKitchenContext)
+    const { ingredients, getIngredients } = useContext(IngredientContext)
     const { addNote } = useContext(NoteContext)
 
     const [ recipe, setRecipe ] = useState({})
+    const [ingredient, setIngredient] = useState({})
     const [userKitchen, setUserKitchen] = useState({})
     const [ note ] = useState({}) 
 
@@ -37,27 +41,22 @@ const handleDeleteRecipe = () => {
     }
 }
 
-const currentRecipeNoteText = (note) => {
-    if(note.recipeId === recipe.id) {
-        return (
-             `${note.text}`
-        )
-    }
-}
+
 
 
     return (
         <section className="recipe">
             <h3 className="recipe_name">{recipe.name}</h3>
             <div className="recipe_description">{recipe.description}</div>
+            <IngredientList />
             <div className="recipe_price">price: {recipe.price}</div>
-            <div className="recipe_notes">{currentRecipeNoteText}</div>
-            <button onClick={handleDeleteRecipe}>Delete This Recipe</button>
             <button>
             <Link to={"/recipes/detail/addNote"}>
                     Add a Note
                 </Link>
             </button>
+            <button onClick={handleDeleteRecipe}>Delete This Recipe</button>
+            
         </section>
     )
 }

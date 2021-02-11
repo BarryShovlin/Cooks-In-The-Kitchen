@@ -13,6 +13,7 @@ export const IngredientForm = () => {
     const [recipe, setRecipe] = useState([])
     const [ingredient, setIngredients] = useState({
         name: "",
+        amount: "",
         recipeId: 0
     })
 
@@ -36,9 +37,40 @@ export const IngredientForm = () => {
     const handleClickSaveIngredient = (event) => {
         event.preventDefault()
     
-            addNote(note) 
-                .then(() => history.push((`/userKitchens`)))
+            addIngredient(ingredient) 
+                .then(() => history.push((`/recipes/${recipe.id}`)))
         }
+        return (
+            <form className="ingredientForm">
+            <h2 className="ingredientForm_title">Add Ingredient</h2>
+            <fieldset>
+                <div className="form-group">
+                    <label htmlFor="text">Ingredient Name</label>
+                    <input type="text" id="name" onChange={handleInputChange} required autoFocus className="form-control" placeholder="Write your note here" value={ingredient.name} />
+                </div>
+            </fieldset>
+            <fieldset>
+                <div className="form-group">
+                    <label htmlFor="amount">Amount:</label>
+                    <input type="text" id="amount" onChange={handleInputChange} required autoFocus className="form-control" placeholder="Write your note here" value={ingredient.amount} />
+                </div>
+            </fieldset>
+            <fieldset>
+              <div className="form-group">
+                  <label htmlFor="note">Assign to a Recipe: </label>
+                  <select defaultValue={recipe.id} name="recipeId" id="recipeId" onChange={handleInputChange} className="form-control" >
+                      <option value="0">Select a recipe</option>
+                      {recipes.map(r => (
+                          <option key={r.id} value={r.id}>
+                              {r.name}
+                          </option>
+                      ))}
+                  </select>
+              </div>
+          </fieldset>
+          <button onClick={handleClickSaveIngredient}>Add To The Recipe</button>
+            </form>
+        )
 
-        
+
     }

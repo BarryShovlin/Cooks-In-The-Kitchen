@@ -16,6 +16,9 @@ import { EmployeeProvider } from "./Employees/EmployeeProvider"
 import { NoteProvider } from "./notes/NoteProvider"
 import { NoteForm } from "./notes/NoteForm"
 import { NoteList } from "./notes/NoteList"
+import { IngredientList } from "./ingredients/IngredientList"
+import { IngredientForm } from "./ingredients/IngredientForm"
+import { IngredientProvider } from "./ingredients/IngredientProvider"
 
 export const ApplicationViews = () => {
     return (
@@ -33,6 +36,7 @@ export const ApplicationViews = () => {
                     <RecipeProvider>
                         <EmployeeProvider>
                             <NoteProvider>
+                                <IngredientProvider>
                             <Route exact path="/kitchen/detail/:kitchenId(\d+)">
                                 <KitchenDetail />
                             </Route>
@@ -56,7 +60,11 @@ export const ApplicationViews = () => {
                             <Route exact path="/recipes/detail/addNote">
                                 <NoteForm />
                             </Route>
-                        
+                            <Route exact path="/recipes/detail/addIngredient">
+                                <IngredientForm />
+                            </Route>
+
+                            </IngredientProvider>
                             </NoteProvider>
                         </EmployeeProvider>
                     </RecipeProvider>

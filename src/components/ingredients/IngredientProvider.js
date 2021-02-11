@@ -11,7 +11,7 @@ export const IngredientProvider = (props) => {
         .then(res => res.json())
         .then(setIngredients)
     }
-    const getIngredientyId = (id) => {
+    const getIngredientById = (id) => {
         return fetch(`http://localhost:8088/ingredients/${id}?_embed=kitchen`)
         .then(res => res.json())
     }
@@ -31,15 +31,15 @@ export const IngredientProvider = (props) => {
         return fetch(`http://localhost:8088/ingredients/${ingredientId}`, {
             method: "DELETE",
         })
-        .then(getNotes)
+        .then(getIngredients)
     }
 
     return (
-        <NoteContext.Provider value={{
+        <IngredientContext.Provider value={{
             ingredients, getIngredients, getIngredientById, addIngredient, deleteIngredient
         }}>
         {props.children}
-        </NoteContext.Provider>
+        </IngredientContext.Provider>
     )
 
 }

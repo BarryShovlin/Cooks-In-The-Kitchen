@@ -3,16 +3,19 @@ import { KitchenContext } from "../kitchens/KitchenProvider"
 import { UserKitchenContext } from "../kitchens/UserKitchenProvider"
 import { RecipeContext } from "./RecipeProvider"
 import "./Recipe.css"
-import { useHistory, useParams } from "react-router-dom"
+import { useHistory, useParams, Link } from "react-router-dom"
+import { IngredientContext } from "../ingredients/IngredientProvider"
+import { IngredientCard } from "../ingredients/IngredientCard"
+
 
 
 
 export const RecipeForm = () => {
     const { addRecipe, getRecipes } = useContext(RecipeContext)
     const { kitchens, getKitchens } = useContext(KitchenContext)
-    const { userKitchens, getUserKitchenById } = useContext(UserKitchenContext)
+    const {ingredients, getIngredients } = useContext(IngredientContext)
 
-    const [userKitchen, setUserKitchen] = useState({})
+    const [ingredient, setIngredient] = useState({})
 
     const {userKitchenId} = useParams()
 
@@ -43,6 +46,14 @@ const handleInputChange = (event) => {
     setRecipe(newRecipe)
 }
 
+const currentRecipeNoteText = (note) => {
+    if(note.recipeId === recipe.id) {
+        return (
+             `${note.text}`
+        )
+    }
+}
+
 const handleClickSaveRecipe = (event) => {
     event.preventDefault()
 
@@ -66,12 +77,6 @@ const handleClickSaveRecipe = (event) => {
                 </div>
             </fieldset>
             <fieldset>
-                <div className="form-group">
-                    <label htmlFor="ingredients">Ingredients needed:</label>
-                    <input type="text" id="ingredients" onChange={handleInputChange} required autoFocus className="form-control" placeholder="Ingredients" value={recipe.ingredients} />
-                </div>
-            </fieldset>
-            <fieldset>
               <div className="form-group">
                   <label htmlFor="kitchen">Assign to Kitchen: </label>
                   <select defaultValue={kitchen.id} name="kitchenId" id="kitchenId" onChange={handleInputChange} className="form-control" >
@@ -90,6 +95,16 @@ const handleClickSaveRecipe = (event) => {
                     <input type="text" id="description" onChange={handleInputChange} required autoFocus className="form-control" placeholer="Instructions" value={recipe.description} />
                 </div>
             </fieldset>
+            <div className="recipe_ingredients">Ingredients:
+            { ingredients.map(i => {
+                return <IngredientCard key={ingredient.id} ingredient={ingredient} />
+            })}
+            </div>
+            <div className="recipe_notes">{currentRecipeNoteText}</div>
+            
+            <button>
+                <Link to={"/recipes/detail/addIngredient"}>Add Ingredients</Link>
+            </button>
             <fieldset>
                 <div className="form-group">
                     <label htmlFor="price">Price:</label>
