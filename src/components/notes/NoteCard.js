@@ -1,8 +1,6 @@
-import React, { useState, useContext, useEffect } from "react";
+import React from "react";
 import "./Notes.css";
-import { useHistory, useParams, Link } from "react-router-dom"
-import { NoteContext } from "./NoteProvider"
-import { RecipeContext } from "../recipes/RecipeProvider"
+
 
 
 export const NoteCard = ({note}) => {
