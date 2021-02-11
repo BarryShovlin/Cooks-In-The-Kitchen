@@ -10,6 +10,7 @@ import { RecipeProvider } from "./recipes/RecipeProvider"
 import { RecipeDetail } from "./recipes/RecipeDetails"
 import { RecipeList } from "./recipes/RecipeList"
 import { UserKitchenList } from "./kitchens/UserKitchenList"
+import { RecipeForm } from "./recipes/RecipeForm"
 
 export const ApplicationViews = () => {
     return (
@@ -24,25 +25,28 @@ export const ApplicationViews = () => {
 
             <UserKitchenProvider>
                 <KitchenProvider>
-                    <Route exact path="/kitchen/detail/:kitchenId(\d+)">
-                        <KitchenDetail />
-                    </Route>
+                    <RecipeProvider>
+                        <Route exact path="/kitchen/detail/:kitchenId(\d+)">
+                            <KitchenDetail />
+                        </Route>
+                        <Route exact path="/userKitchens">
+                            <UserKitchenList />
+                        </Route>
+
+                        <Route exact path="/userKitchen/detail/:userKitchenId(\d+)">
+                            <RecipeList />
+                        </Route>
+                        <Route exact path="/recipes/detail/:recipeId(\d+)">
+                            <RecipeDetail />
+                        </Route>
+                        <Route exact path="/recipes/detail/addRecipe">
+                            <RecipeForm />
+                        </Route>
+                    </RecipeProvider>
                 </KitchenProvider>
             </UserKitchenProvider>
 
-            <RecipeProvider>
-                <Route exact path="/recipes/detail/:recipeId(/d+)">
-                    <RecipeList />
-                </Route>
-            </RecipeProvider>
 
-            <UserKitchenProvider>
-                <KitchenProvider>
-                    <Route exact path="/userKitchens">
-                        <UserKitchenList />
-                    </Route>
-                </KitchenProvider>
-            </UserKitchenProvider>
 
 
 

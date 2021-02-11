@@ -12,13 +12,31 @@ export const RecipeProvider = (props) => {
         .then(setRecipes)
     }
     const getRecipeById = (id) => {
-        return fetch(`http://localhost:8088/recipes/${id}?expand=ekitchens`)
+        return fetch(`http://localhost:8088/recipes/${id}?_embed=kitchen`)
         .then(res => res.json())
+    }
+
+    const addRecipe = (recipeObj) => {
+        return fetch("http://localhost:8088/recipes", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify(recipeObj)
+        })
+        .then(getRecipes)
+    }
+
+    const deleteRecipe = recipeId => {
+        return fetch(`http://localhost:8088/recipes/${recipeId}`, {
+            method: "DELETE",
+        })
+        .then(getRecipes)
     }
 
     return (
         <RecipeContext.Provider value={{
-            recipes, getRecipes, getRecipeById
+            recipes, getRecipes, getRecipeById, addRecipe, deleteRecipe
         }}>
         {props.children}
         </RecipeContext.Provider>
