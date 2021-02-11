@@ -31,6 +31,13 @@ export const UserKitchenCard = ({ userKitchen }) => {
             .then(() => history.push(`/userKitchen/detail/${userKitchen.id}`))
     }
 
+    const handleClickEmployeeInfo = (even) => {
+        event.preventDefault()
+        
+        getEmployees()
+            .then(() => history.push(`employees/detail/${userKitchen.id}`) )
+    }
+
 
 
     return (
