@@ -35,7 +35,7 @@ export const UserKitchenCard = ({ userKitchen }) => {
                 {userKitchen.kitchen.name}
             </h3>
             <div className="kitchen__address">{userKitchen.kitchen.address}</div>
-            <div className="kitchen__phone">address:{userKitchen.kitchen.phone}</div>
+            <div className="kitchen__phone">phone:{userKitchen.kitchen.phone}</div>
             <button onClick={() => history.push(`/userKitchen/detail/${userKitchen.kitchenId}`)}>Check out the recipes </button>
             <button onClick={handleClickEmployeeInfo}>Team Info</button>
             <button onClick={handleDeleteUserKitchen}>Remove From Your Kitchens</button>
