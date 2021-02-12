@@ -48,7 +48,7 @@ const {recipeId} = useParams()
 
     return (
         <form className="noteForm">
-            <h2 className="noteForm_title"> Recipe Notes</h2>
+            <h2 className="noteForm_title"> Add a note</h2>
             <fieldset>
                 <div className="form-group">
                     <label htmlFor="text">Instructions:</label>

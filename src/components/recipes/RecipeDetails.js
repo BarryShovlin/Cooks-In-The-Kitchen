@@ -7,6 +7,7 @@ import { NoteContext } from "../notes/NoteProvider"
 import { IngredientCard } from "../ingredients/IngredientCard"
 import { IngredientList } from "../ingredients/IngredientList"
 import { IngredientContext } from "../ingredients/IngredientProvider"
+import { NoteForm } from "../notes/NoteForm"
 
 export const RecipeDetail = () => {
     const { getRecipeById, deleteRecipe } = useContext(RecipeContext)
@@ -42,7 +43,15 @@ const handleDeleteRecipe = () => {
     }
 }
 
-
+const returnNoteForm = () => {
+    const currentUser = parseInt(localStorage.getItem("kitchen_user"))
+    if(currentUser === recipeId){
+    return (
+        <div className="noteForm">
+        <NoteForm />
+        </div>
+    )}
+}
 
     return (
         <section className="recipe">
@@ -57,6 +66,7 @@ const handleDeleteRecipe = () => {
             </button>
           
             <button onClick={handleDeleteRecipe}>Delete This Recipe</button>
+            <button onClick={returnNoteForm}>Add a Note</button>
             
         </section>
     )

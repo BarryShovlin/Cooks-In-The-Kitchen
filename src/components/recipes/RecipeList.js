@@ -39,11 +39,7 @@ export const RecipeList = () => {
                     Add a new recipe
                 </Link>
             </button>
-            <button>
-            <Link to={"/recipes/detail/addNote"}>
-                    Add a Note
-                </Link>
-            </button>
+            
 
     </>
       )
