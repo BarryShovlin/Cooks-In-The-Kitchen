@@ -5,10 +5,6 @@ import { EmployeeContext } from "./EmployeeProvider"
 
 
 export const EmployeeCard = ({ employee }) => {
-    const { employees, getEmployees, getEmployeesById } = useContext(EmployeeContext)
-
-
-    const history = useHistory()
 
     return (
         <section className="employee">

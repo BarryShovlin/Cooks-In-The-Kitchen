@@ -54,8 +54,6 @@ const handleDeleteRecipe = () => {
             <div className="recipe_description">{recipe.description}</div>
             <IngredientList />
             <div className="recipe_price">price: {recipe.price}</div>
-            
-            
             <button>
                 <Link to={`/recipes/${recipeId}/addIngredient`}>Add Ingredients</Link>
             </button>

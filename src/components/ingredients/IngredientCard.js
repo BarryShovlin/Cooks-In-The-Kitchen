@@ -17,8 +17,8 @@ const handleDeleteIngredient = () => {
 
     return (
     <section className="ingredient">
-        <div className="ingredient_text">({ingredient.amount})   {ingredient.name}</div>
-        <button onClick={handleDeleteIngredient}>Remove Ingredient</button>
+        <div className="ingredient_text">({ingredient.amount})   {ingredient.name} <button onClick={handleDeleteIngredient}>Remove Ingredient</button></div>
+        
     </section>
 );
     }
