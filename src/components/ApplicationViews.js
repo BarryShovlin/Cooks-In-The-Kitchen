@@ -55,7 +55,7 @@ export const ApplicationViews = () => {
                             <Route exact path="/recipes/detail/addRecipe/:kitchenId(\d+)">
                                 <RecipeForm />
                             </Route>
-                            <Route exact path="/employees/detail/:userKitchenId(\d+)">
+                            <Route exact path="/employees/detail/:kitchenId(\d+)">
                                 <EmployeeList />
                             </Route>
                             <Route exact path="/recipes/:recipeId(\d+)/addIngredient">

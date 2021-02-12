@@ -24,7 +24,7 @@ export const UserKitchenCard = ({ userKitchen }) => {
         event.preventDefault()
         
         getEmployees()
-            .then(() => history.push(`employees/detail/${userKitchen.kitchenId}`) )
+            .then(() => history.push(`/employees/detail/${userKitchen.kitchenId}`) )
     }
 
 

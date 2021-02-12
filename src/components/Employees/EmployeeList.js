@@ -8,15 +8,14 @@ import { useParams } from "react-router-dom"
 export const EmployeeList = () => {
     const {employees, getEmployees} = useContext(EmployeeContext)
     const {kitchens, getKitchens, getKitchenById } = useContext(KitchenContext)
-
+  const {kitchenId} = useParams()
     const [employee, setEmployee] = useState({})
     const [kitchen, setKitchen] = useState({})
     
 
   
     useEffect(() => {
-      getKitchens()
-      .then(getEmployees());
+      getKitchenById(kitchenId)
   
     }, []);
   
