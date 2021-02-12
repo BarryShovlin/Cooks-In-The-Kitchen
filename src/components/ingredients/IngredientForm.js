@@ -7,7 +7,7 @@ import { useHistory, useParams } from "react-router-dom"
 
 
 export const IngredientForm = () => {
-    const { addIngredient, getIngredients} = useContext(IngredientContext)
+    const { addIngredient, getIngredients, deleteIngredient} = useContext(IngredientContext)
     const {recipes, getRecipes} = useContext(RecipeContext)
 const {recipeId} = useParams()
     const [recipe, setRecipe] = useState({})
@@ -33,6 +33,9 @@ const {recipeId} = useParams()
         newIngredient[event.target.id] = selectedVal
         setIngredients(newIngredient)
     }
+
+
+  
 
     const handleClickSaveIngredient = (event) => {
         event.preventDefault()

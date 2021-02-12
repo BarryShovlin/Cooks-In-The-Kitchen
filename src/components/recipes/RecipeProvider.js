@@ -33,7 +33,6 @@ export const RecipeProvider = (props) => {
         })
         .then(getRecipes)
     }
-
     return (
         <RecipeContext.Provider value={{
             recipes, getRecipes, getRecipeById, addRecipe, deleteRecipe

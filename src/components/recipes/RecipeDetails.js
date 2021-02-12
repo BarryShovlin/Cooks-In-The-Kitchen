@@ -43,15 +43,10 @@ const handleDeleteRecipe = () => {
     }
 }
 
-const returnNoteForm = () => {
+
     const currentUser = parseInt(localStorage.getItem("kitchen_user"))
-    if(currentUser === recipeId){
-    return (
-        <div className="noteForm">
-        <NoteForm />
-        </div>
-    )}
-}
+
+
 
     return (
         <section className="recipe">
@@ -66,7 +61,6 @@ const returnNoteForm = () => {
             </button>
           
             <button onClick={handleDeleteRecipe}>Delete This Recipe</button>
-            <button onClick={returnNoteForm}>Add a Note</button>
             
         </section>
     )

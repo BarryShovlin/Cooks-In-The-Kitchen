@@ -19,7 +19,7 @@ const {recipeId} = useParams()
     const [note, setNotes] = useState({
         text: "",
         userId: parseInt(localStorage.getItem("kitchen_user")),
-        recipeId: 0
+        recipeId: parseInt(recipeId)
     })
 
     const history = useHistory()
@@ -41,9 +41,8 @@ const {recipeId} = useParams()
 
     const handleClickSaveNote = (event) => {
         event.preventDefault()
-    
             addNote(note) 
-                .then(() => history.push((`/userKitchens`)))
+                .then(() => history.push((`/recipes/detail/${recipeId}`)))
         }
 
     return (
@@ -51,23 +50,10 @@ const {recipeId} = useParams()
             <h2 className="noteForm_title"> Add a note</h2>
             <fieldset>
                 <div className="form-group">
-                    <label htmlFor="text">Instructions:</label>
+                    <label htmlFor="text">Recipe Notes</label>
                     <input type="text" id="text" onChange={handleInputChange} required autoFocus className="form-control" placeholder="Write your note here" value={note.text} />
                 </div>
             </fieldset>
-            <fieldset>
-              <div className="form-group">
-                  <label htmlFor="note">Assign to a Recipe: </label>
-                  <select defaultValue={recipe.id} name="recipeId" id="recipeId" onChange={handleInputChange} className="form-control" >
-                      <option value="0">Select a recipe</option>
-                      {recipes.map(r => (
-                          <option key={r.id} value={r.id}>
-                              {r.name}
-                          </option>
-                      ))}
-                  </select>
-              </div>
-          </fieldset>
             <button onClick={handleClickSaveNote}>Save This Note</button>
 
             </form>
