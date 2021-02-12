@@ -33,9 +33,15 @@ export const RecipeList = () => {
       })
     }
             </div>
+            
             <button>
                 <Link to={`/recipes/detail/addRecipe/${kitchenId}`}>
                     Add a new recipe
+                </Link>
+            </button>
+            <button>
+            <Link to={"/recipes/detail/addNote"}>
+                    Add a Note
                 </Link>
             </button>
 

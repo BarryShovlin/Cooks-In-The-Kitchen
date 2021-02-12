@@ -36,11 +36,6 @@ export const NoteList = () => {
       })
     }
             </div>
-            <button>
-                <Link to={"/recipes/detail/addRecipe"}>
-                    Add a new recipe
-                </Link>
-            </button>
 
     </>
       )

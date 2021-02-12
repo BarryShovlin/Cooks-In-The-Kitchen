@@ -13,6 +13,7 @@ export const IngredientList = () => {
   const [userKitchen, setUserKitchen] = useState({})
   const [recipe, setRecipe] = useState({})
   const [ingredient, setIngredient] = useState({})
+  const {recipeId} = useParams()
 
 
     useEffect(() => {
@@ -20,12 +21,12 @@ export const IngredientList = () => {
       .then((response) => {
         setUserKitchen(response)
       })
-      .then(getIngredients())
+      .then(getIngredients)
   
     }, []);
 
    
-    const recipeIngredients = ingredients.filter(i => i.recipeId === recipe.id)
+    const recipeIngredients = ingredients.filter(i => i.recipeId === recipeId)
 
     const currentRecipeNoteText = (note) => {
         if(note.recipeId === recipe.id) {
@@ -34,22 +35,20 @@ export const IngredientList = () => {
             )
         }
     }
-
+console.log(recipe)
+console.log(recipeId)
       return (
         <>
-        <div className="recipe_ingredients">Ingredients:
+        <div className="ingredients">Ingredients:</div>
+        <div className="recipe_ingredients">
             { ingredients.map(i => {
+              if(i.recipeId === recipeId) {
                 return <IngredientCard key={i.id} ingredient={i} />
-            })}
+            }})}
             </div>
             <div className="recipe_notes">{currentRecipeNoteText}</div>
         
         <div className="recipes">
-        {
-      recipeIngredients.map(ingredient => {
-        return <IngredientCard key={ingredient.id} note={ingredient} />
-      })
-    }
     
             </div>
 
