@@ -14,7 +14,7 @@ const {recipeId} = useParams()
     const [ingredient, setIngredients] = useState({
         name: "",
         amount: "",
-        recipeId: recipeId
+        recipeId: parseInt(recipeId)
     })
 
     const history = useHistory()
@@ -33,7 +33,7 @@ const {recipeId} = useParams()
         newIngredient[event.target.id] = selectedVal
         setIngredients(newIngredient)
     }
-console.log(ingredient)
+
     const handleClickSaveIngredient = (event) => {
         event.preventDefault()
     
@@ -46,13 +46,13 @@ console.log(ingredient)
             <fieldset>
                 <div className="form-group">
                     <label htmlFor="text">Ingredient Name</label>
-                    <input type="text" id="name" onChange={handleInputChange} required autoFocus className="form-control" placeholder="Write your note here" value={ingredient.name} />
+                    <input type="text" id="name" onChange={handleInputChange} required autoFocus className="form-control" placeholder="example: Clam Juice" value={ingredient.name} />
                 </div>
             </fieldset>
             <fieldset>
                 <div className="form-group">
                     <label htmlFor="amount">Amount:</label>
-                    <input type="text" id="amount" onChange={handleInputChange} required autoFocus className="form-control" placeholder="Write your note here" value={ingredient.amount} />
+                    <input type="text" id="amount" onChange={handleInputChange} required autoFocus className="form-control" placeholder="example: 1cup" value={ingredient.amount} />
                 </div>
             </fieldset>
           <button onClick={handleClickSaveIngredient}>Add To The Recipe</button>

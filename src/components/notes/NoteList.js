@@ -3,13 +3,16 @@ import { useParams, Link } from "react-router-dom"
 import {  NoteContext } from "./NoteProvider"
 import { NoteCard } from "./NoteCard"
 import { UserKitchenContext } from "../kitchens/UserKitchenProvider"
-import { RecipeForm } from '../recipes/RecipeForm'
+import { RecipeContext } from '../recipes/RecipeProvider'
 
 export const NoteList = () => {
     const { notes, getNotes } = useContext(NoteContext)
+    const { recipes, getRecipes} = useContext(RecipeContext)
     const { userKitchens, getUserKitchens, getUserKitchenById} = useContext(UserKitchenContext)
   const {userKitchenId} = useParams()
   const [userKitchen, setUserKitchen] = useState({})
+  const [recipe, setRecipes] = useState({})
+  const {recipeId} = useParams()
 
 
     useEffect(() => {
@@ -22,8 +25,7 @@ export const NoteList = () => {
     }, []);
 
    
-    const recipeNotes = notes.filter(n => n.kitchenId === userKitchen.kitchenId)
-
+    const recipeNotes = notes.filter(n => n.recipeId === parseInt(recipeId))
 
 
       return (

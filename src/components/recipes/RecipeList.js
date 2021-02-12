@@ -25,7 +25,7 @@ export const RecipeList = () => {
 
       return (
         <>
-        <h2>check Out The Recipes</h2>
+        <h2>{kitchen.name} Recipes</h2>
         <div className="recipes">
         {
       kitchenRessie.map(recipe => {

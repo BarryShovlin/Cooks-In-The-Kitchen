@@ -3,17 +3,18 @@ import { NoteContext } from "./NoteProvider"
 import { RecipeContext } from "../recipes/RecipeProvider"
 import "./Notes.css"
 import { useHistory, useParams } from "react-router-dom"
-import { UserKitchenContext } from "../kitchens/UserKitchenProvider"
+import { KitchenContext } from "../kitchens/KitchenProvider"
 
 
 
 export const NoteForm = () => {
     const { addNote, getNotes} = useContext(NoteContext)
     const {recipes, getRecipes} = useContext(RecipeContext)
+    const {kitchens, getKitchens} = useContext(KitchenContext)
 
-
-
-    const [userKitchen, setUserKitchen] = useState({})
+const {kitchenId} = useParams()
+const {recipeId} = useParams()
+    const [kitchen, setKitchen] = useState({})
     const [recipe, setRecipe] = useState([])
     const [note, setNotes] = useState({
         text: "",
@@ -26,8 +27,8 @@ export const NoteForm = () => {
     useEffect(() => {
         getNotes()
         .then(getRecipes())
+        .then(getKitchens)
     }, [])
-
     const handleInputChange = (event) => {
         const newNote = { ...note }
         let selectedVal = event.target.value
@@ -42,9 +43,8 @@ export const NoteForm = () => {
         event.preventDefault()
     
             addNote(note) 
-                .then(() => history.push((`/userKitchen/detail/${userKitchen.kitchenId}`)))
+                .then(() => history.push((`/userKitchens`)))
         }
-    
 
     return (
         <form className="noteForm">

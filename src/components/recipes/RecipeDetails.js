@@ -20,7 +20,7 @@ export const RecipeDetail = () => {
     const [ note ] = useState({}) 
 
     const history = useHistory()
-    const {kitchenId} = useParams()
+    const {userKitchenId} = useParams()
 
     const {recipeId} = useParams()
 
@@ -35,7 +35,7 @@ const handleDeleteRecipe = () => {
     const userRecipeId = recipe.userId
     if(currentUser === userRecipeId) {
         deleteRecipe(recipeId)
-        .then(history.push(`/userKitchens/detail/${kitchenId}`))
+        .then(history.push(`/userKitchens`))
     }
     else{
         window.alert("You do not have permission to delete this recipe")

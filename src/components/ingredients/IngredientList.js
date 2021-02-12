@@ -26,7 +26,7 @@ export const IngredientList = () => {
     }, []);
 
    
-    const recipeIngredients = ingredients.filter(i => i.recipeId === recipeId)
+    const recipeIngredients = ingredients.filter(i => i.recipeId === parseInt(recipeId))
 
     const currentRecipeNoteText = (note) => {
         if(note.recipeId === recipe.id) {
@@ -35,16 +35,13 @@ export const IngredientList = () => {
             )
         }
     }
-console.log(recipe)
-console.log(recipeId)
       return (
         <>
-        <div className="ingredients">Ingredients:</div>
+        <h3 className="ingredients">Ingredients:</h3>
         <div className="recipe_ingredients">
-            { ingredients.map(i => {
-              if(i.recipeId === recipeId) {
+            { recipeIngredients.map(i => {
                 return <IngredientCard key={i.id} ingredient={i} />
-            }})}
+          })}
             </div>
             <div className="recipe_notes">{currentRecipeNoteText}</div>
         
