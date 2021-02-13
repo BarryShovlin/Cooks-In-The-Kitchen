@@ -28,7 +28,6 @@ const [kitchen, setKitchen] = useState([])
         price: ""
     })
 
-
 const history = useHistory()
 
 useEffect(() => {
