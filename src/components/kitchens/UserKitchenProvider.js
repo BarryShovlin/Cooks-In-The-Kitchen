@@ -10,12 +10,12 @@ export const UserKitchenProvider = (props) => {
 
     
     const getUserKitchenById = (id) => {
-        return fetch(`http://localhost:8088/userKitchens/${id}?_embed=kitchens`)
+        return fetch(`http://localhost:8088/userKitchens/${id}?_embed=kitchens&_expand=user`)
             .then(res => res.json())
     }
 
     const getUserKitchens = () => {
-        return fetch("http://localhost:8088/userKitchens?_expand=kitchen&")
+        return fetch("http://localhost:8088/userKitchens?_expand=kitchen")
         .then(res => res.json())
         .then(setUserKitchen)
     }
