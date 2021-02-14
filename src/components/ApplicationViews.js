@@ -11,6 +11,14 @@ import { RecipeDetail } from "./recipes/RecipeDetails"
 import { RecipeList } from "./recipes/RecipeList"
 import { UserKitchenList } from "./kitchens/UserKitchenList"
 import { RecipeForm } from "./recipes/RecipeForm"
+import { EmployeeList } from "./Employees/EmployeeList"
+import { EmployeeProvider } from "./Employees/EmployeeProvider"
+import { NoteProvider } from "./notes/NoteProvider"
+import { NoteForm } from "./notes/NoteForm"
+import { NoteList } from "./notes/NoteList"
+import { IngredientList } from "./ingredients/IngredientList"
+import { IngredientForm } from "./ingredients/IngredientForm"
+import { IngredientProvider } from "./ingredients/IngredientProvider"
 
 export const ApplicationViews = () => {
     return (
@@ -26,22 +34,37 @@ export const ApplicationViews = () => {
             <UserKitchenProvider>
                 <KitchenProvider>
                     <RecipeProvider>
-                        <Route exact path="/kitchen/detail/:kitchenId(\d+)">
-                            <KitchenDetail />
-                        </Route>
-                        <Route exact path="/userKitchens">
-                            <UserKitchenList />
-                        </Route>
+                        <EmployeeProvider>
+                            <NoteProvider>
+                                <IngredientProvider>
+                            <Route exact path="/kitchen/detail/:kitchenId(\d+)">
+                                <KitchenDetail />
+                            </Route>
+                            <Route exact path="/userKitchens">
+                                <UserKitchenList />
+                            </Route>
 
-                        <Route exact path="/userKitchen/detail/:userKitchenId(\d+)">
-                            <RecipeList />
-                        </Route>
-                        <Route exact path="/recipes/detail/:recipeId(\d+)">
-                            <RecipeDetail />
-                        </Route>
-                        <Route exact path="/recipes/detail/addRecipe">
-                            <RecipeForm />
-                        </Route>
+                            <Route exact path="/userKitchen/detail/:kitchenId(\d+)">
+                                <RecipeList />
+                            </Route>
+                            <Route exact path="/recipes/detail/:recipeId(\d+)">
+                                <RecipeDetail />
+                                <NoteList />
+                                <NoteForm />
+                            </Route>
+                            <Route exact path="/recipes/detail/addRecipe/:kitchenId(\d+)">
+                                <RecipeForm />
+                            </Route>
+                            <Route exact path="/employees/detail/:kitchenId(\d+)">
+                                <EmployeeList />
+                            </Route>
+                            <Route exact path="/recipes/:recipeId(\d+)/addIngredient">
+                                <IngredientForm />
+                            </Route>
+
+                            </IngredientProvider>
+                            </NoteProvider>
+                        </EmployeeProvider>
                     </RecipeProvider>
                 </KitchenProvider>
             </UserKitchenProvider>

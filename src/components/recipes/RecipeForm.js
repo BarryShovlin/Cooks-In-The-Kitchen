@@ -3,28 +3,30 @@ import { KitchenContext } from "../kitchens/KitchenProvider"
 import { UserKitchenContext } from "../kitchens/UserKitchenProvider"
 import { RecipeContext } from "./RecipeProvider"
 import "./Recipe.css"
-import { useHistory, useParams } from "react-router-dom"
+import { useHistory, useParams, Link } from "react-router-dom"
+import { IngredientContext } from "../ingredients/IngredientProvider"
+import { IngredientCard } from "../ingredients/IngredientCard"
+
 
 
 
 export const RecipeForm = () => {
     const { addRecipe, getRecipes } = useContext(RecipeContext)
     const { kitchens, getKitchens } = useContext(KitchenContext)
-    const { userKitchens, getUserKitchenById } = useContext(UserKitchenContext)
+    const {ingredients, getIngredients } = useContext(IngredientContext)
 
-    const [userKitchen, setUserKitchen] = useState({})
+    const [ingredient, setIngredient] = useState({})
 
-    const {userKitchenId} = useParams()
+    const {kitchenId} = useParams()
 
 const [kitchen, setKitchen] = useState([])
     const [recipe, setRecipe] = useState({
         name: "",
         description: "",
-        userId: 0,
-        kitchenId: 0,
+        userId: parseInt(localStorage.getItem("kitchen_user")),
+        kitchenId: parseInt(kitchenId),
         price: ""
     })
-
 
 const history = useHistory()
 
@@ -43,17 +45,13 @@ const handleInputChange = (event) => {
     setRecipe(newRecipe)
 }
 
+
+
 const handleClickSaveRecipe = (event) => {
     event.preventDefault()
 
-    const kitchenId = recipe.kitchenId
-
-    if (kitchenId === 0) {
-        window.alert("Please select a kitchen")
-    } else {
         addRecipe(recipe)
-            .then(() => history.push((`/userKitchens`)))
-    }
+            .then(() => history.push(`/userKitchen/detail/${kitchenId}`))
 }
 
     return (
@@ -67,27 +65,8 @@ const handleClickSaveRecipe = (event) => {
             </fieldset>
             <fieldset>
                 <div className="form-group">
-                    <label htmlFor="ingredients">Ingredients needed:</label>
-                    <input type="text" id="ingredients" onChange={handleInputChange} required autoFocus className="form-control" placeholder="Ingredients" value={recipe.ingredients} />
-                </div>
-            </fieldset>
-            <fieldset>
-              <div className="form-group">
-                  <label htmlFor="kitcheb">Assign to Kitchen: </label>
-                  <select defaultValue={kitchen.id} name="kitchenId" id="kitchenId" onChange={handleInputChange} className="form-control" >
-                      <option value="0">Select a kitchen</option>
-                      {kitchens.map(k => (
-                          <option key={k.id} value={k.id}>
-                              {k.name}
-                          </option>
-                      ))}
-                  </select>
-              </div>
-          </fieldset>
-            <fieldset>
-                <div className="form-group">
-                    <label htmlFor="description">Instructions:</label>
-                    <input type="text" id="description" onChange={handleInputChange} required autoFocus className="form-control" placeholer="Instructions" value={recipe.instructions} />
+                    <label htmlFor="description">Description:</label>
+                    <input type="text" id="description" onChange={handleInputChange} required autoFocus className="form-control" placeholer="Instructions" value={recipe.description} />
                 </div>
             </fieldset>
             <fieldset>

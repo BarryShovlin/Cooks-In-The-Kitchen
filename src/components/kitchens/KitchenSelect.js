@@ -10,7 +10,7 @@ export const KitchenSelect = () => {
       getKitchens();
   
     }, []);
-
+console.log(kitchens)
       return (
         <>
         <h2>Choose Your Kitchen</h2>

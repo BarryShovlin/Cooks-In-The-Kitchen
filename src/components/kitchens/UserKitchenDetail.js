@@ -36,9 +36,9 @@ import { KitchenDetail } from "./KitchenDetail"
 
     return (
         <section className="kitchen">
-            <h3 className="kitchen__name">
+            <h1 className="kitchen__name">
                 {kitchen.kitchen?.name}
-            </h3>
+            </h1>
             <div className="kitchen__address">{kitchen.kitchen?.address}</div>
             <div className="kitchen__phone">address:{kitchen.kitchen?.phone}</div>
             <button onClick={handleClickRecipeView}>

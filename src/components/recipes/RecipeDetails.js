@@ -3,15 +3,25 @@ import { RecipeContext } from "./RecipeProvider"
 import { UserKitchenContext } from "../kitchens/UserKitchenProvider"
 import "./Recipe.css"
 import { useParams, useHistory, Link } from "react-router-dom"
+import { NoteContext } from "../notes/NoteProvider"
+import { IngredientCard } from "../ingredients/IngredientCard"
+import { IngredientList } from "../ingredients/IngredientList"
+import { IngredientContext } from "../ingredients/IngredientProvider"
+import { NoteForm } from "../notes/NoteForm"
 
 export const RecipeDetail = () => {
     const { getRecipeById, deleteRecipe } = useContext(RecipeContext)
     const { userKitchens, getUserKitchens } = useContext(UserKitchenContext)
+    const { ingredients, getIngredients } = useContext(IngredientContext)
+    const { addNote } = useContext(NoteContext)
 
     const [ recipe, setRecipe ] = useState({})
+    const [ingredient, setIngredient] = useState({})
     const [userKitchen, setUserKitchen] = useState({})
+    const [ note ] = useState({}) 
 
     const history = useHistory()
+    const {userKitchenId} = useParams()
 
     const {recipeId} = useParams()
 
@@ -32,13 +42,24 @@ const handleDeleteRecipe = () => {
         window.alert("You do not have permission to delete this recipe")
     }
 }
+
+
+    const currentUser = parseInt(localStorage.getItem("kitchen_user"))
+
+
+
     return (
         <section className="recipe">
             <h3 className="recipe_name">{recipe.name}</h3>
             <div className="recipe_description">{recipe.description}</div>
+            <IngredientList />
             <div className="recipe_price">price: {recipe.price}</div>
-            <div className="recipe_notes">Instructions: {recipe.note}</div>
+            <button>
+                <Link to={`/recipes/${recipeId}/addIngredient`}>Add Ingredients</Link>
+            </button>
+          
             <button onClick={handleDeleteRecipe}>Delete This Recipe</button>
+            
         </section>
     )
 }
