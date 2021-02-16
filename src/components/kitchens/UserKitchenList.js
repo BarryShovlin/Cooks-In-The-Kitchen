@@ -1,11 +1,11 @@
 import React, { useEffect, useContext, useState } from "react"
 import {  UserKitchenContext } from "./UserKitchenProvider"
 import { UserKitchenCard } from "./UserKitchenCard"
-import { KitchenContext, KitchenProvider } from "./KitchenProvider"
+import { KitchenContext } from "./KitchenProvider"
 
 
 export const UserKitchenList = () => {
-    const {userKitchens, getUserKitchens, getUserKitchenById} = useContext(UserKitchenContext)
+    const {userKitchens, getUserKitchens} = useContext(UserKitchenContext)
     const { getKitchens } = useContext(KitchenContext)
   
     useEffect(() => {

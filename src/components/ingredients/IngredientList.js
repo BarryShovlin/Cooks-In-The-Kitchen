@@ -1,18 +1,17 @@
 import React, { useEffect, useContext, useState } from "react"
-import { useParams, Link } from "react-router-dom"
+import { useParams} from "react-router-dom"
 import {  IngredientContext } from "./IngredientProvider"
 import { IngredientCard } from "./IngredientCard"
 import { UserKitchenContext } from "../kitchens/UserKitchenProvider"
-import { RecipeContext } from '../recipes/RecipeProvider'
 
 export const IngredientList = () => {
     const { ingredients, getIngredients } = useContext(IngredientContext)
-    const { userKitchens, getUserKitchens, getUserKitchenById} = useContext(UserKitchenContext)
-    const { recipes, getRecipes } = useContext(RecipeContext)
+    const {getUserKitchenById} = useContext(UserKitchenContext)
+
   const {userKitchenId} = useParams()
   const [userKitchen, setUserKitchen] = useState({})
-  const [recipe, setRecipe] = useState({})
-  const [ingredient, setIngredient] = useState({})
+  const [recipe] = useState({})
+
   const {recipeId} = useParams()
 
 

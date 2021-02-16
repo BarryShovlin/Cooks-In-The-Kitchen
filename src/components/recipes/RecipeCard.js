@@ -1,19 +1,17 @@
 import React, { useState, useContext, useEffect } from "react";
 import "./Recipe.css";
-import { useHistory, useParams, Link } from "react-router-dom"
+import { Link } from "react-router-dom"
 import { RecipeContext } from "./RecipeProvider"
 
 
 export const RecipeCard = ({recipe}) => {
-    const { recipes, getRecipeById, getRecipes, addRecipe } = useContext(RecipeContext)
+    const {  getRecipes } = useContext(RecipeContext)
 
     const [setRecipes] = useState({})
 
-    const {recipeId} = useParams()
 
 
 
-    const history = useHistory()
 
     useEffect(() => {
         getRecipes()

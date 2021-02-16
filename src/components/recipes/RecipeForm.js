@@ -4,22 +4,16 @@ import { UserKitchenContext } from "../kitchens/UserKitchenProvider"
 import { RecipeContext } from "./RecipeProvider"
 import "./Recipe.css"
 import { useHistory, useParams, Link } from "react-router-dom"
-import { IngredientContext } from "../ingredients/IngredientProvider"
-import { IngredientCard } from "../ingredients/IngredientCard"
-
 
 
 
 export const RecipeForm = () => {
     const { addRecipe, getRecipes } = useContext(RecipeContext)
-    const { kitchens, getKitchens } = useContext(KitchenContext)
-    const {ingredients, getIngredients } = useContext(IngredientContext)
+    const { getKitchens } = useContext(KitchenContext)
 
-    const [ingredient, setIngredient] = useState({})
 
     const {kitchenId} = useParams()
 
-const [kitchen, setKitchen] = useState([])
     const [recipe, setRecipe] = useState({
         name: "",
         description: "",
