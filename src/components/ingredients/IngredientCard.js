@@ -1,12 +1,11 @@
-import React, { useContext, useState } from "react";
+import React, { useContext } from "react";
 import "./Ingredients.css";
 import { IngredientContext } from "./IngredientProvider"
-import { IngredientList } from "./IngredientList";
 
 export const IngredientCard = ({ingredient}) => {
 
-const {ingredients, deleteIngredient } = useContext(IngredientContext)
-const [ingredienty, setIngredients] = useState({})
+const {deleteIngredient } = useContext(IngredientContext)
+
 
 
 const handleDeleteIngredient = () => {

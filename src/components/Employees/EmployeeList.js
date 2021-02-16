@@ -1,24 +1,23 @@
 import React, { useEffect, useContext, useState } from "react"
 import {  UserKitchenContext } from "../kitchens/UserKitchenProvider"
 import { EmployeeCard } from "./EmployeeCard"
-import { KitchenContext, KitchenProvider } from "../kitchens/KitchenProvider"
 import { useParams } from "react-router-dom"
 
 
+
 export const EmployeeList = () => {
-    const {employees, getEmployees} = useContext(EmployeeContext)
-    const {kitchens, getKitchens, getKitchenById } = useContext(KitchenContext)
+    const {userKitchens, getUserKitchens} = useContext(UserKitchenContext)
   const {kitchenId} = useParams()
-    const [employee, setEmployee] = useState({})
-    const [kitchen, setKitchen] = useState({})
+
     
 
   
     useEffect(() => {
-      getKitchenById(kitchenId)
+      getUserKitchens()
   
     }, []);
   
+    const employeeInfo = userKitchens?.filter(kitchen => kitchen.kitchenId === parseInt(kitchenId))
       
     return (
         <>
@@ -26,7 +25,7 @@ export const EmployeeList = () => {
         <div className="employees">
     {
      
-      employees.map(e => {
+      employeeInfo?.map(e => {
          
         return <EmployeeCard key={e.id} employee={e} />
 

@@ -7,10 +7,9 @@ import { useHistory, useParams } from "react-router-dom"
 
 
 export const IngredientForm = () => {
-    const { addIngredient, getIngredients, deleteIngredient} = useContext(IngredientContext)
-    const {recipes, getRecipes} = useContext(RecipeContext)
+    const { addIngredient, getIngredients} = useContext(IngredientContext)
+    const { getRecipes } = useContext(RecipeContext)
 const {recipeId} = useParams()
-    const [recipe, setRecipe] = useState({})
     const [ingredient, setIngredients] = useState({
         name: "",
         amount: "",

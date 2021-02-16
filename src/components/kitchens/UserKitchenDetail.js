@@ -4,11 +4,10 @@ import { KitchenContext } from "./KitchenProvider"
 import { UserKitchenContext } from "./UserKitchenProvider"
 import "./Kitchen.css"
 import { useHistory, useParams, Link } from "react-router-dom"
-import { KitchenDetail } from "./KitchenDetail"
 
  export const UserKitchenDetail = () => {
-     const { kitchens, getKitchens, getKitchenById} = useContext(KitchenContext)
-     const { userKitchens, getUserKitchens, getUserKitchenById, deleteUserKitchen} = useContext(UserKitchenContext)
+     const { getKitchenById } = useContext(KitchenContext)
+     const { getUserKitchens } = useContext(UserKitchenContext)
 
     const history = useHistory()
 

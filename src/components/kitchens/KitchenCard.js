@@ -1,12 +1,10 @@
-import React, { useState, useContext, useEffect } from "react";
+import React, { useContext } from "react";
 import "./Kitchen.css";
 import { useHistory } from "react-router-dom"
 import { KitchenContext } from "./KitchenProvider"
-import { UserKitchenContext } from "./UserKitchenProvider"
 
 export const KitchenCard = ({kitchen}) => {
-    const { kitchens, getKitchenById, getKitchens, addKitchen } = useContext(KitchenContext)
-    const { addUserKitchen, getUserKitchens } = useContext(UserKitchenContext)
+    const { getKitchenById } = useContext(KitchenContext)
     
   
     const history = useHistory()

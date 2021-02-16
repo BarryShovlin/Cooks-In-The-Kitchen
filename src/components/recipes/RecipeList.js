@@ -3,11 +3,10 @@ import { useParams, Link } from "react-router-dom"
 import {  RecipeContext } from "./RecipeProvider"
 import { RecipeCard } from "./RecipeCard"
 import { KitchenContext } from "../kitchens/KitchenProvider"
-import { RecipeForm } from './RecipeForm'
 
 export const RecipeList = () => {
     const { recipes, getRecipes } = useContext(RecipeContext)
-    const { kitchens, getKitchens, getKitchenById} = useContext(KitchenContext)
+    const { getKitchenById } = useContext(KitchenContext)
   const {kitchenId} = useParams()
   const [kitchen, setKitchen] = useState({})
 
