@@ -27,7 +27,7 @@ const position = userKitchen.position
         addUserKitchen(userKitchen)
         .then(() => history.push("/userKitchens"))
         } else {
-            window.alert("please include your position in this kitchen")
+            window.alert("please include your position")
         }
         
     }
