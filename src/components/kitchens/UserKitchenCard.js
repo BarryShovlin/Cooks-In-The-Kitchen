@@ -4,16 +4,16 @@ import { useHistory } from "react-router-dom"
 import { UserKitchenContext } from "./UserKitchenProvider"
 
 export const UserKitchenCard = ({ userKitchen }) => {
-    const {  deleteUserKitchen } = useContext(UserKitchenContext)
-   
+    const { deleteUserKitchen } = useContext(UserKitchenContext)
+
 
     const history = useHistory()
 
     const handleDeleteUserKitchen = () => {
         deleteUserKitchen(userKitchen.id)
-        .then(() => {
-            history.push("/userKitchens")
-        })
+            .then(() => {
+                history.push("/userKitchens")
+            })
     }
 
 
@@ -31,7 +31,7 @@ export const UserKitchenCard = ({ userKitchen }) => {
             <button onClick={() => history.push(`/userKitchen/detail/${userKitchen.kitchenId}`)}>Check out the recipes </button>
             <button onClick={() => history.push(`/employees/detail/${userKitchen.kitchenId}`)}>Team Info</button>
             <button onClick={handleDeleteUserKitchen}>Remove From Your Kitchens</button>
-            
+
 
         </section>
     );

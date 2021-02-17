@@ -8,7 +8,7 @@ export const UserKitchenProvider = (props) => {
 
     const [userKitchens, setUserKitchen] = useState([])
 
-    
+
     const getUserKitchenById = (id) => {
         return fetch(`http://localhost:8088/userKitchens/${id}?_embed=kitchens&_expand=user`)
             .then(res => res.json())
@@ -16,15 +16,15 @@ export const UserKitchenProvider = (props) => {
 
     const getUserKitchens = () => {
         return fetch("http://localhost:8088/userKitchens?_expand=kitchen&_expand=user")
-        .then(res => res.json())
-        .then(setUserKitchen)
+            .then(res => res.json())
+            .then(setUserKitchen)
     }
 
     const deleteUserKitchen = userKitchenId => {
         return fetch(`http://localhost:8088/userKitchens/${userKitchenId}`, {
             method: "DELETE"
         })
-        .then(getUserKitchens)
+            .then(getUserKitchens)
     }
 
     const addUserKitchen = userKitchenObj => {
@@ -35,8 +35,8 @@ export const UserKitchenProvider = (props) => {
             },
             body: JSON.stringify(userKitchenObj)
         })
-        .then(setUserKitchen)
-        .then(getUserKitchens)
+            .then(setUserKitchen)
+            .then(getUserKitchens)
     }
 
 

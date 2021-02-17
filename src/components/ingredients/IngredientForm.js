@@ -7,9 +7,9 @@ import { useHistory, useParams } from "react-router-dom"
 
 
 export const IngredientForm = () => {
-    const { addIngredient, getIngredients} = useContext(IngredientContext)
+    const { addIngredient, getIngredients } = useContext(IngredientContext)
     const { getRecipes } = useContext(RecipeContext)
-const {recipeId} = useParams()
+    const { recipeId } = useParams()
     const [ingredient, setIngredients] = useState({
         name: "",
         amount: "",
@@ -20,7 +20,7 @@ const {recipeId} = useParams()
 
     useEffect(() => {
         getIngredients()
-        .then(getRecipes())
+            .then(getRecipes())
     }, [])
 
     const handleInputChange = (event) => {
@@ -34,16 +34,16 @@ const {recipeId} = useParams()
     }
 
 
-  
+
 
     const handleClickSaveIngredient = (event) => {
         event.preventDefault()
-    
-            addIngredient(ingredient) 
-                .then(() => history.push((`/recipes/detail/${recipeId}`)))
-        }
-        return (
-            <form className="ingredientForm">
+
+        addIngredient(ingredient)
+            .then(() => history.push((`/recipes/detail/${recipeId}`)))
+    }
+    return (
+        <form className="ingredientForm">
             <h2 className="ingredientForm_title">Add Ingredient</h2>
             <fieldset>
                 <div className="form-group">
@@ -57,9 +57,9 @@ const {recipeId} = useParams()
                     <input type="text" id="amount" onChange={handleInputChange} required autoFocus className="form-control" placeholder="example: 1cup" value={ingredient.amount} />
                 </div>
             </fieldset>
-          <button onClick={handleClickSaveIngredient}>Add To The Recipe</button>
-            </form>
-        )
+            <button onClick={handleClickSaveIngredient}>Add To The Recipe</button>
+        </form>
+    )
 
 
-    }
+}

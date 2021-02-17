@@ -2,18 +2,15 @@ import React, { useContext, useEffect } from "react";
 import { Link } from "react-router-dom"
 import { KitchenContext } from "../components/kitchens/KitchenProvider"
 import { KitchenCard } from "../components/kitchens/KitchenCard"
-import { UserKitchenContext } from "../components/kitchens/UserKitchenProvider"
-import { useHistory } from "react-router-dom"
+
 
 
 
 
 export const Home = () => {
     const { kitchens, getKitchens } = useContext(KitchenContext)
-    const { addUserKitchen } = useContext(UserKitchenContext)
-    const history = useHistory()
 
-   console.log(kitchens)
+    console.log(kitchens)
 
     useEffect(() => {
         getKitchens()

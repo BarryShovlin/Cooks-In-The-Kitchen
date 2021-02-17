@@ -21,14 +21,14 @@ export const KitchenProvider = (props) => {
 
     const getUserKitchen = (userId) => {
         return fetch(`http://localhost:8088/userKitchens/${userId}`)
-        .then(res => res.json())
+            .then(res => res.json())
     }
 
     const deleteKitchen = userKitchenId => {
         return fetch(`http://localhost:8088/userKitchens/${userKitchenId}`, {
             method: "DELETE"
         })
-        .then(getKitchens)
+            .then(getKitchens)
     }
 
     const addKitchen = kitchenObj => {
@@ -39,7 +39,7 @@ export const KitchenProvider = (props) => {
             },
             body: JSON.stringify(kitchenObj)
         })
-        .then(getKitchens)
+            .then(getKitchens)
     }
 
     return (

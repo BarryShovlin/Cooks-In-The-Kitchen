@@ -5,37 +5,37 @@ import { NoteContext } from "./NoteProvider"
 import { RecipeContext } from "../recipes/RecipeProvider"
 
 
-export const NoteCard = ({note}) => {
-const { deleteNote } = useContext(NoteContext)
+export const NoteCard = ({ note }) => {
+    const { deleteNote } = useContext(NoteContext)
 
-const currentUser = parseInt(localStorage.getItem("kitchen_user"))
+    const currentUser = parseInt(localStorage.getItem("kitchen_user"))
 
-const handleDeleteNote = () => {
-    
-    if(currentUser === note.userId) {
-        deleteNote(note.id)
+    const handleDeleteNote = () => {
+
+        if (currentUser === note.userId) {
+            deleteNote(note.id)
+        }
+        else {
+            window.alert("You do not have permission to delete another user's notes")
+        }
     }
-    else{
-        window.alert("You do not have permission to delete another user's notes")
-    }
-}
 
-if(currentUser === note.userId) {
-    return (
-    <section className="note">
-        <div className="note_text">{note.text}</div>
-        <div className="note_author"> - {note.user.name}</div>
-        <button onClick={handleDeleteNote}>Delete Note</button>
+    if (currentUser === note.userId) {
+        return (
+            <section className="note">
+                <div className="note_text">{note.text}</div>
+                <div className="note_author"> - {note.user.name}</div>
+                <button onClick={handleDeleteNote}>Delete Note</button>
 
-    </section>
-)
+            </section>
+        )
     } else {
         return (
             <section className="note">
                 <div className="note_text">{note.text}</div>
                 <div className="note_author"> - {note.user.name}</div>
-        
+
             </section>
         )
     }
-    }
+}
