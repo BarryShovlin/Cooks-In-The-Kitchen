@@ -52,8 +52,8 @@ export const RecipeDetail = () => {
                 <h3 className="recipe_name">{recipe.name}</h3>
                 <div className="recipe__creator">created by: {recipe.user?.name}</div>
                 <div className="recipe_description">{recipe.description}</div>
-                <IngredientList />
                 <div className="recipe_price">price: {recipe.price}</div>
+                <IngredientList />
                 <button onClick={handleAddIngredient}>Add Ingredient</button>
 
                 <button onClick={handleDeleteRecipe}>Delete This Recipe</button>
@@ -67,8 +67,9 @@ export const RecipeDetail = () => {
                 <h3 className="recipe_name">{recipe.name}</h3>
                 <div className="recipe__creator">created by: {recipe.user?.name}</div>
                 <div className="recipe_description">{recipe.description}</div>
-                <IngredientList />
                 <div className="recipe_price">price: {recipe.price}</div>
+                <IngredientList />
+             
             </section>
         )
 
