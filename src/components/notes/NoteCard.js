@@ -6,11 +6,8 @@ import { RecipeContext } from "../recipes/RecipeProvider"
 
 
 export const NoteCard = ({note}) => {
-const { notes, deleteNote, getNotes } = useContext(NoteContext)
-const { recipes, getRecipes } = useContext(RecipeContext)
-const [notee, setNotes] = useState({})
-const [recipe, setRecipe] = useState({})
-const {noteId} = useParams()
+const { deleteNote } = useContext(NoteContext)
+
 const currentUser = parseInt(localStorage.getItem("kitchen_user"))
 const handleDeleteNote = () => {
     
