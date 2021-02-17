@@ -69,7 +69,7 @@ export const RecipeDetail = () => {
                 <div className="recipe_description">{recipe.description}</div>
                 <div className="recipe_price">price: {recipe.price}</div>
                 <IngredientList />
-             
+
             </section>
         )
 
