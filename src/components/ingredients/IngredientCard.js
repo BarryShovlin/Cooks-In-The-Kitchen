@@ -6,10 +6,12 @@ export const IngredientCard = ({ingredient}) => {
 
 const {  deleteIngredient } = useContext(IngredientContext)
 
+const currentUser = parseInt(localStorage.getItem("kitchen_user"))
+const userIngredient = ingredient.recipe.userId
+
 
 const handleDeleteIngredient = () => {
-    const currentUser = parseInt(localStorage.getItem("kitchen_user"))
-    const userIngredient = ingredient.recipe.userId
+    
     if(currentUser === userIngredient){
     deleteIngredient(ingredient.id)
     }
@@ -18,11 +20,19 @@ const handleDeleteIngredient = () => {
     }
 }
 
-
+if(currentUser === userIngredient){
     return (
     <section className="ingredient">
         <div className="ingredient_text">({ingredient.amount})   {ingredient.name} <button onClick={handleDeleteIngredient}>Remove Ingredient</button></div>
         
     </section>
-);
+)
+    } else {
+        return (
+            <section className="ingredient">
+                <div className="ingredient_text">({ingredient.amount})   {ingredient.name}</div>
+                
+            </section>
+        )
+    }
     }
