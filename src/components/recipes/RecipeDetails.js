@@ -33,9 +33,16 @@ const handleDeleteRecipe = () => {
     }
 }
 
-
+const handleAddIngredient = () => {
     const currentUser = parseInt(localStorage.getItem("kitchen_user"))
-
+    const userRecipeId = recipe.userId
+    if(currentUser === userRecipeId) {
+        history.push(`/recipes/${recipeId}/addIngredient`)
+    }
+    else {
+        window.alert("You may only modify recipes you have created")
+    }
+}
 
 
     return (
@@ -44,9 +51,7 @@ const handleDeleteRecipe = () => {
             <div className="recipe_description">{recipe.description}</div>
             <IngredientList />
             <div className="recipe_price">price: {recipe.price}</div>
-            <button>
-                <Link to={`/recipes/${recipeId}/addIngredient`}>Add Ingredients</Link>
-            </button>
+            <button onClick={handleAddIngredient}>Add Ingredient</button>
           
             <button onClick={handleDeleteRecipe}>Delete This Recipe</button>
             

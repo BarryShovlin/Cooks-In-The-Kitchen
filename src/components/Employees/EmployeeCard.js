@@ -11,7 +11,6 @@ export const EmployeeCard = ({ employee }) => {
                 {employee.user.name}
             </h3>
             <div className="employee_position">{employee.position}</div>
-            <div className="employee_name">Phone Number: {employee.user.phone}</div>
             <div className="employee_email">Email Address: {employee.user.email}</div>
 
 

@@ -18,15 +18,15 @@ const handleDeleteNote = () => {
         deleteNote(note.id)
     }
     else{
-        window.alert("You do not have permission to delete this recipe")
+        window.alert("You do not have permission to delete another user's notes")
     }
 }
-
 
 
     return (
     <section className="note">
         <div className="note_text">{note.text}</div>
+        <div className="note_author"> - {note.user.name}</div>
         <button onClick={handleDeleteNote}>Delete Note</button>
 
     </section>

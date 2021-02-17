@@ -9,7 +9,7 @@ export const KitchenProvider = (props) => {
     const [kitchens, setKitchens] = useState([])
 
     const getKitchens = () => {
-        return fetch("http://localhost:8088/kitchens?_embed=userKitchens")
+        return fetch("http://localhost:8088/kitchens")
             .then(res => res.json())
             .then(setKitchens)
     }

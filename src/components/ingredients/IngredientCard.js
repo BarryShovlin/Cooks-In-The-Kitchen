@@ -4,13 +4,18 @@ import { IngredientContext } from "./IngredientProvider"
 
 export const IngredientCard = ({ingredient}) => {
 
-const {deleteIngredient } = useContext(IngredientContext)
-
+const {  deleteIngredient } = useContext(IngredientContext)
 
 
 const handleDeleteIngredient = () => {
+    const currentUser = parseInt(localStorage.getItem("kitchen_user"))
+    const userIngredient = ingredient.recipe.userId
+    if(currentUser === userIngredient){
     deleteIngredient(ingredient.id)
-
+    }
+    else {
+        window.alert("You do not have permission to adjust this recipe")
+    }
 }
 
 

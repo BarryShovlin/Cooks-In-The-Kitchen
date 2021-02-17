@@ -7,7 +7,7 @@ export const RecipeProvider = (props) => {
     const [recipes, setRecipes] = useState([])
     
     const getRecipes = () => {
-        return fetch("http://localhost:8088/recipes?_embed=ingredients")
+        return fetch("http://localhost:8088/recipes?_embed=ingredients&_expand=user")
         .then(res => res.json())
         .then(setRecipes)
     }
