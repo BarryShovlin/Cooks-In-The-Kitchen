@@ -9,6 +9,7 @@ export const NoteCard = ({note}) => {
 const { deleteNote } = useContext(NoteContext)
 
 const currentUser = parseInt(localStorage.getItem("kitchen_user"))
+
 const handleDeleteNote = () => {
     
     if(currentUser === note.userId) {
@@ -19,7 +20,7 @@ const handleDeleteNote = () => {
     }
 }
 
-
+if(currentUser === note.userId) {
     return (
     <section className="note">
         <div className="note_text">{note.text}</div>
@@ -27,5 +28,14 @@ const handleDeleteNote = () => {
         <button onClick={handleDeleteNote}>Delete Note</button>
 
     </section>
-);
+)
+    } else {
+        return (
+            <section className="note">
+                <div className="note_text">{note.text}</div>
+                <div className="note_author"> - {note.user.name}</div>
+        
+            </section>
+        )
+    }
     }

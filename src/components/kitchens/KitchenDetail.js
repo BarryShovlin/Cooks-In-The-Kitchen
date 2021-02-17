@@ -18,13 +18,17 @@ import { useHistory, useParams } from "react-router-dom"
         userId: parseInt(localStorage.getItem("kitchen_user")),
         position: ""
     })
-
+const position = userKitchen.position
   
     const handleClickAddKitchen = (event) => {
         event.preventDefault()
+        if(position !== "") {
         
         addUserKitchen(userKitchen)
         .then(() => history.push("/userKitchens"))
+        } else {
+            window.alert("please include your position in this kitchen")
+        }
         
     }
 

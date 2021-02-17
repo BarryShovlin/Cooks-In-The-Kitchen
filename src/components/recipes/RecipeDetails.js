@@ -50,6 +50,7 @@ export const RecipeDetail = () => {
         return (
             <section className="recipe">
                 <h3 className="recipe_name">{recipe.name}</h3>
+                <div className="recipe__creator">created by: {recipe.user.name}</div>
                 <div className="recipe_description">{recipe.description}</div>
                 <IngredientList />
                 <div className="recipe_price">price: {recipe.price}</div>
@@ -64,6 +65,7 @@ export const RecipeDetail = () => {
         return (
             <section className="recipe">
                 <h3 className="recipe_name">{recipe.name}</h3>
+                <div className="recipe__creator">created by: {recipe.user.name}</div>
                 <div className="recipe_description">{recipe.description}</div>
                 <IngredientList />
                 <div className="recipe_price">price: {recipe.price}</div>
