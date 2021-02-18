@@ -24,7 +24,11 @@ export const RecipeProvider = (props) => {
             },
             body: JSON.stringify(recipeObj)
         })
-            .then(getRecipes)
+        .then(res => res.json())
+            .then((response) => {
+                getRecipes()
+                return response 
+            })
     }
 
     const deleteRecipe = recipeId => {

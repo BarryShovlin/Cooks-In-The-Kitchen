@@ -11,19 +11,20 @@ export const NoteForm = () => {
     const { addNote, getNotes } = useContext(NoteContext)
     const { getRecipes } = useContext(RecipeContext)
     const { getKitchens } = useContext(KitchenContext)
-
     const { recipeId } = useParams()
-    const [note, setNotes] = useState({
+    const initalNoteState = {
         text: "",
         userId: parseInt(localStorage.getItem("kitchen_user")),
         recipeId: parseInt(recipeId)
-    })
+    }
+   
+    const [note, setNote] = useState(initalNoteState)
 
     const history = useHistory()
 
     useEffect(() => {
         getNotes()
-            .then(getRecipes())
+            .then(getRecipes)
             .then(getKitchens)
     }, [])
     const handleInputChange = (event) => {
@@ -33,13 +34,13 @@ export const NoteForm = () => {
             selectedVal = parseInt(selectedVal)
         }
         newNote[event.target.id] = selectedVal
-        setNotes(newNote)
+        setNote(newNote)
     }
 
     const handleClickSaveNote = (event) => {
         event.preventDefault()
         addNote(note)
-            .then(() => history.push((`/recipes/detail/${recipeId}`)))
+            .then(() => setNote(initalNoteState))
     }
 
     return (

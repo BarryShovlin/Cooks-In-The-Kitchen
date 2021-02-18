@@ -42,9 +42,12 @@ export const RecipeForm = () => {
 
     const handleClickSaveRecipe = (event) => {
         event.preventDefault()
-
+        if(recipe.name !== "" && recipe.description !== "" && recipe.price !== ""){
         addRecipe(recipe)
-            .then(() => history.push(`/userKitchen/detail/${kitchenId}`))
+            .then((response) => history.push(`/recipes/detail/${response.id}`))
+        } else {
+            window.alert("Please fill out all areas of this form")
+        }
     }
 
     return (

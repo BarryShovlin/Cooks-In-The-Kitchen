@@ -24,7 +24,7 @@ export const RecipeCard = ({ recipe }) => {
             <h3 className="recipe__name">
                 {recipe.name}
             </h3>
-            <div className="recipe__creator">recipe by: {recipe.user.name}</div>
+            <div className="recipe__creator">recipe by: {recipe.user?.name}</div>
             <div className="recipe__description">{recipe.description}</div>
             <button>
                 <Link to={`/recipes/detail/${recipe.id}`}>
