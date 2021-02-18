@@ -8,14 +8,11 @@ import { KitchenContext } from "../kitchens/KitchenProvider"
 
 
 export const NoteForm = () => {
-    const { addNote, getNotes} = useContext(NoteContext)
-    const {recipes, getRecipes} = useContext(RecipeContext)
-    const {kitchens, getKitchens} = useContext(KitchenContext)
+    const { addNote, getNotes } = useContext(NoteContext)
+    const { getRecipes } = useContext(RecipeContext)
+    const { getKitchens } = useContext(KitchenContext)
 
-const {kitchenId} = useParams()
-const {recipeId} = useParams()
-    const [kitchen, setKitchen] = useState({})
-    const [recipe, setRecipe] = useState([])
+    const { recipeId } = useParams()
     const [note, setNotes] = useState({
         text: "",
         userId: parseInt(localStorage.getItem("kitchen_user")),
@@ -26,8 +23,8 @@ const {recipeId} = useParams()
 
     useEffect(() => {
         getNotes()
-        .then(getRecipes())
-        .then(getKitchens)
+            .then(getRecipes())
+            .then(getKitchens)
     }, [])
     const handleInputChange = (event) => {
         const newNote = { ...note }
@@ -41,9 +38,9 @@ const {recipeId} = useParams()
 
     const handleClickSaveNote = (event) => {
         event.preventDefault()
-            addNote(note) 
-                .then(() => history.push((`/recipes/detail/${recipeId}`)))
-        }
+        addNote(note)
+            .then(() => history.push((`/recipes/detail/${recipeId}`)))
+    }
 
     return (
         <form className="noteForm">
@@ -56,8 +53,8 @@ const {recipeId} = useParams()
             </fieldset>
             <button onClick={handleClickSaveNote}>Save This Note</button>
 
-            </form>
+        </form>
 
-            )
+    )
 
 }

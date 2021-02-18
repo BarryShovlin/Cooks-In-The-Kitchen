@@ -1,9 +1,8 @@
 import React, { useContext, useEffect, useState } from "react"
 import { KitchenContext } from "../kitchens/KitchenProvider"
-import { UserKitchenContext } from "../kitchens/UserKitchenProvider"
 import { RecipeContext } from "./RecipeProvider"
 import "./Recipe.css"
-import { useHistory, useParams, Link } from "react-router-dom"
+import { useHistory, useParams } from "react-router-dom"
 
 
 
@@ -12,7 +11,7 @@ export const RecipeForm = () => {
     const { getKitchens } = useContext(KitchenContext)
 
 
-    const {kitchenId} = useParams()
+    const { kitchenId } = useParams()
 
     const [recipe, setRecipe] = useState({
         name: "",
@@ -22,31 +21,31 @@ export const RecipeForm = () => {
         price: ""
     })
 
-const history = useHistory()
+    const history = useHistory()
 
-useEffect(() => {
-    getRecipes()
-        .then(getKitchens)
-}, [])
+    useEffect(() => {
+        getRecipes()
+            .then(getKitchens)
+    }, [])
 
-const handleInputChange = (event) => {
-    const newRecipe = { ...recipe }
-    let selectedVal = event.target.value
-    if (event.target.id.includes("Id")) {
-        selectedVal = parseInt(selectedVal)
+    const handleInputChange = (event) => {
+        const newRecipe = { ...recipe }
+        let selectedVal = event.target.value
+        if (event.target.id.includes("Id")) {
+            selectedVal = parseInt(selectedVal)
+        }
+        newRecipe[event.target.id] = selectedVal
+        setRecipe(newRecipe)
     }
-    newRecipe[event.target.id] = selectedVal
-    setRecipe(newRecipe)
-}
 
 
 
-const handleClickSaveRecipe = (event) => {
-    event.preventDefault()
+    const handleClickSaveRecipe = (event) => {
+        event.preventDefault()
 
         addRecipe(recipe)
             .then(() => history.push(`/userKitchen/detail/${kitchenId}`))
-}
+    }
 
     return (
         <form className="recipeForm">
@@ -74,5 +73,5 @@ const handleClickSaveRecipe = (event) => {
 
         </form>
     )
-    
+
 }

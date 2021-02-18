@@ -5,9 +5,9 @@ import { UserKitchenContext } from "./UserKitchenProvider"
 import "./Kitchen.css"
 import { useHistory, useParams, Link } from "react-router-dom"
 
- export const UserKitchenDetail = () => {
-     const { getKitchenById } = useContext(KitchenContext)
-     const { getUserKitchens } = useContext(UserKitchenContext)
+export const UserKitchenDetail = () => {
+    const { getKitchenById } = useContext(KitchenContext)
+    const { getUserKitchens } = useContext(UserKitchenContext)
 
     const history = useHistory()
 
@@ -16,7 +16,7 @@ import { useHistory, useParams, Link } from "react-router-dom"
 
     const userKitchenId = useParams()
 
-    
+
 
     const handleClickRecipeView = (event) => {
         event.preventDefault()
@@ -25,11 +25,11 @@ import { useHistory, useParams, Link } from "react-router-dom"
         getKitchenById(userKitchenId)
             .then(() => history.push(`/kitchen/detail/${userKitchen.id}`))
     }
- 
+
 
     useEffect(() => {
         getUserKitchens()
-        .then(setUserKitchens)
+            .then(setUserKitchens)
     }, [])
 
 
@@ -44,7 +44,7 @@ import { useHistory, useParams, Link } from "react-router-dom"
                 <Link className="navbar__link" to="/kitchenRecipes">Check out the recipes</Link>
 
             </button>
-        
+
 
         </section>
     )

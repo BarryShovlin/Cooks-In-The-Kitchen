@@ -5,15 +5,15 @@ export const RecipeContext = createContext()
 
 export const RecipeProvider = (props) => {
     const [recipes, setRecipes] = useState([])
-    
+
     const getRecipes = () => {
-        return fetch("http://localhost:8088/recipes?_embed=ingredients")
-        .then(res => res.json())
-        .then(setRecipes)
+        return fetch("http://localhost:8088/recipes?_embed=ingredients&_expand=user")
+            .then(res => res.json())
+            .then(setRecipes)
     }
     const getRecipeById = (id) => {
-        return fetch(`http://localhost:8088/recipes/${id}?_expand=kitchen`)
-        .then(res => res.json())
+        return fetch(`http://localhost:8088/recipes/${id}?_expand=kitchen&_expand=user`)
+            .then(res => res.json())
     }
 
     const addRecipe = (recipeObj) => {
@@ -24,20 +24,20 @@ export const RecipeProvider = (props) => {
             },
             body: JSON.stringify(recipeObj)
         })
-        .then(getRecipes)
+            .then(getRecipes)
     }
 
     const deleteRecipe = recipeId => {
         return fetch(`http://localhost:8088/recipes/${recipeId}`, {
             method: "DELETE",
         })
-        .then(getRecipes)
+            .then(getRecipes)
     }
     return (
         <RecipeContext.Provider value={{
             recipes, getRecipes, getRecipeById, addRecipe, deleteRecipe
         }}>
-        {props.children}
+            {props.children}
         </RecipeContext.Provider>
     )
 

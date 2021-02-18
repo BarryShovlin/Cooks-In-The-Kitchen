@@ -5,15 +5,15 @@ export const NoteContext = createContext()
 
 export const NoteProvider = (props) => {
     const [notes, setNotes] = useState([])
-    
+
     const getNotes = () => {
-        return fetch("http://localhost:8088/notes?_expand=recipe")
-        .then(res => res.json())
-        .then(setNotes)
+        return fetch("http://localhost:8088/notes?_expand=recipe&_expand=user")
+            .then(res => res.json())
+            .then(setNotes)
     }
     const getNoteById = (id) => {
         return fetch(`http://localhost:8088/notes/${id}?_embed=kitchen`)
-        .then(res => res.json())
+            .then(res => res.json())
     }
 
     const addNote = (noteObj) => {
@@ -24,21 +24,21 @@ export const NoteProvider = (props) => {
             },
             body: JSON.stringify(noteObj)
         })
-        .then(getNotes)
+            .then(getNotes)
     }
 
     const deleteNote = noteId => {
         return fetch(`http://localhost:8088/notes/${noteId}`, {
             method: "DELETE",
         })
-        .then(getNotes)
+            .then(getNotes)
     }
 
     return (
         <NoteContext.Provider value={{
             notes, getNotes, getNoteById, addNote, deleteNote
         }}>
-        {props.children}
+            {props.children}
         </NoteContext.Provider>
     )
 

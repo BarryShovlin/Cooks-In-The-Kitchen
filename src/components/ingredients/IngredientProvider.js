@@ -5,15 +5,15 @@ export const IngredientContext = createContext()
 
 export const IngredientProvider = (props) => {
     const [ingredients, setIngredients] = useState([])
-    
+
     const getIngredients = () => {
         return fetch("http://localhost:8088/ingredients?_expand=recipe")
-        .then(res => res.json())
-        .then(setIngredients)
+            .then(res => res.json())
+            .then(setIngredients)
     }
     const getIngredientById = (id) => {
         return fetch(`http://localhost:8088/ingredients/${id}?_embed=kitchen`)
-        .then(res => res.json())
+            .then(res => res.json())
     }
 
     const addIngredient = (ingredientObj) => {
@@ -24,21 +24,21 @@ export const IngredientProvider = (props) => {
             },
             body: JSON.stringify(ingredientObj)
         })
-        .then(getIngredients)
+            .then(getIngredients)
     }
 
     const deleteIngredient = ingredientId => {
         return fetch(`http://localhost:8088/ingredients/${ingredientId}`, {
             method: "DELETE",
         })
-        .then(getIngredients)
+            .then(getIngredients)
     }
 
     return (
         <IngredientContext.Provider value={{
             ingredients, getIngredients, getIngredientById, addIngredient, deleteIngredient
         }}>
-        {props.children}
+            {props.children}
         </IngredientContext.Provider>
     )
 
