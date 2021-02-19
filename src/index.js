@@ -4,6 +4,7 @@ import { BrowserRouter as Router } from "react-router-dom";
 import './index.css';
 import { Kitchen } from "./components/Kitchen"
 import "./components/Kitchen.css"
+import 'bootstrap/dist/css/bootstrap.min.css'
 
 
 ReactDOM.render(
