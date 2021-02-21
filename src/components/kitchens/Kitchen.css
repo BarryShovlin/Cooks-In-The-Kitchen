@@ -1,13 +1,14 @@
 
-.kitchens {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
-  }
-  
-  .kitchen {
-      flex-basis: 28%;
-      margin: 1em;
-      padding: 1em;
-      border: 1px solid goldenrod;
-  }
+
+.customCard {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: rgb(210, 82, 210)
+}
+
+.kitchen__name {
+    color: white
+}
+
+.button {
+    background: rgb(255, 255, 0)
+}

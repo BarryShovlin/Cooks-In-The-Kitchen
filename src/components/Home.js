@@ -2,6 +2,8 @@ import React, { useContext, useEffect } from "react";
 import { Link } from "react-router-dom"
 import { KitchenContext } from "../components/kitchens/KitchenProvider"
 import { KitchenCard } from "../components/kitchens/KitchenCard"
+import Card from "react-bootstrap/Card"
+import Image from "react-bootstrap/Image"
 
 
 
@@ -31,7 +33,7 @@ export const Home = () => {
                     })
                 }
             </div>
-
+           
         </>
     );
 }
