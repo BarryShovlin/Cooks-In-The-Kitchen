@@ -27,7 +27,7 @@ export const KitchenCard = ({ kitchen }) => {
             <h3 className="kitchen__name">
                 {kitchen.name}
             </h3>
-            <Button className="button" variant="warning" size="sm" onClick={handleClickDetails}>
+            <Button className="button" variant="secondary" size="sm" onClick={handleClickDetails}>
                 View Details
                 </Button>
 

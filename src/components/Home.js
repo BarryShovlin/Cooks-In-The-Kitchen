@@ -22,7 +22,7 @@ export const Home = () => {
     return (
         <>
             <h1>Cooks In The Kitchen</h1>
-            <small>Keeping Consistency In The Kitchen</small>
+            <small className="slogan">Keeping Consistency In The Kitchen</small>
             <div>
                 <Link className="userKitchens" to="/userKitchens">Go to your kitchens</Link>
             </div>
