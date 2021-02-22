@@ -4,6 +4,8 @@ import { useHistory } from "react-router-dom"
 import { KitchenContext } from "./KitchenProvider"
 import Button from "react-bootstrap/Button"
 import Card from "react-bootstrap/Card"
+import CardGroup from "react-bootstrap/CardGroup"
+
 
 export const KitchenCard = ({ kitchen }) => {
     const { getKitchenById } = useContext(KitchenContext)
@@ -22,7 +24,7 @@ export const KitchenCard = ({ kitchen }) => {
             .then(() => history.push(`/kitchen/detail/${kitchen.id}`))
     }
     return (
-        <Card className="customCard" bg="purple" style={{ width: '18rem' }}>
+    
         <section className="kitchen">
             <h3 className="kitchen__name">
                 {kitchen.name}
@@ -30,9 +32,8 @@ export const KitchenCard = ({ kitchen }) => {
             <Button className="button" variant="secondary" size="sm" onClick={handleClickDetails}>
                 View Details
                 </Button>
-
         </section>
-        </Card>
+        
     );
 }
 

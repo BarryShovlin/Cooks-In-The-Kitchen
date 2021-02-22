@@ -3,6 +3,7 @@ import { KitchenContext } from "./KitchenProvider"
 import { UserKitchenContext } from "./UserKitchenProvider"
 import "./Kitchen.css"
 import { useHistory, useParams } from "react-router-dom"
+import Button from "react-bootstrap/Button"
 
 
 export const KitchenDetail = () => {
@@ -62,9 +63,9 @@ export const KitchenDetail = () => {
                         <input type="text" id="position" onChange={handleInputChange} required autoFocus className="form-control" placeholder="example: Line Cook" value={userKitchen.position} />
                     </div>
                 </fieldset>
-                <button onClick={handleClickAddKitchen}>
+                <Button variant="secondary" onClick={handleClickAddKitchen}>
                     Add to your kitchens
-            </button>
+            </Button>
             </section>
         </form>
     )

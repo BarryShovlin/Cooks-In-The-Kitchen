@@ -17,7 +17,7 @@ export const NavBar = (props) => {
             </li>
 
             <li className="navbar__logout">
-                <Button variant="flat" size="sm" onClick={Logout()}>Get Outta Here</Button>
+                <Button variant="white" size="sm" onClick={Logout()}>Sign Out</Button>
             </li>
         </ul>
         </Navbar>

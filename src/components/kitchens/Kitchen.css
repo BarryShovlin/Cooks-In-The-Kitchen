@@ -1,8 +1,14 @@
 
 
-.customCard {
+.kitchen {
+    display: grid;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background: rgb(50, 49, 49)
+    background: rgb(50, 49, 49);
+    width: 300px;
+        border: 3px solid;
+        flex-basis: 25%;
+        margin: 12px, 5px;
+    
 }
 
 .kitchen__name {
@@ -10,5 +16,28 @@
 }
 
 .button {
-    background: black
+    background: rgb(50, 49, 49);
+    color:floralwhite
+}
+
+.addUserKitchen {
+        
+        display: flex;
+        justify-content: space-around;
+        flex-wrap: wrap;
+        margin-bottom: 50px;
+}
+.kitchens {
+    color:floralwhite
+}
+
+.form-group {
+    width: 300px
+}
+
+.your_kitchen {
+    border: solid;
+    border-color: floralwhite;
+    width: 500px;
+    color:floralwhite
 }
