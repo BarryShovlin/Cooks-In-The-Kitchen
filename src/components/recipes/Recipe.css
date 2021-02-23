@@ -1,3 +1,4 @@
+
 .recipe {
     color: floralwhite;
     border: solid;
@@ -15,4 +16,14 @@
 }
 .newRec {
     color: floralwhite;
+}
+.addRemBtn {
+    margin-top: 5px;
+    margin-bottom: 5px;
+    margin-left: 5px;
+    margin-right: 5px;
+}
+.recipeForm {
+    color: floralwhite;
+    width: 500px
 }

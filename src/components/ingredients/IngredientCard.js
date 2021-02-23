@@ -25,7 +25,7 @@ export const IngredientCard = ({ ingredient }) => {
         return (
             <section className="ingredient">
                 <div className="ingredient_text">({ingredient.amount})   {ingredient.name} 
-                <Button variant="secondary"  onClick={handleDeleteIngredient}>Remove Ingredient</Button>
+                <Button className="rmvBtn" variant="secondary"  onClick={handleDeleteIngredient}>Remove Ingredient</Button>
                 </div>
 
             </section>

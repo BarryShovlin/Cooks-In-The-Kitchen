@@ -21,7 +21,7 @@ export const RecipeCard = ({ recipe }) => {
 
 
     return (
-        <section className="recipe">
+        <section className="recipe_card">
             <h3 className="recipe__name">
                 {recipe.name}
             </h3>

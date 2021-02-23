@@ -9,6 +9,8 @@
     border-color: floralwhite;
     margin-bottom: 20px;
     margin-top: 20px;
+    align-content:center
+    
     
 }
 
@@ -28,7 +30,7 @@
 .addUserKitchen {
         
         display: flex;
-        justify-content: space-around;
+        justify-items: center;
         flex-wrap: wrap;
         margin-bottom: 50px;
 }
@@ -44,7 +46,9 @@
     border: solid;
     border-color: floralwhite;
     width: 500px;
-    color:floralwhite
+    color:floralwhite;
+    margin-bottom: 10px;
+    margin-top: 10px;
 }
 .det_button {
     margin-top: 5px;

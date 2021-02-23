@@ -1,9 +1,7 @@
 import React, { useContext, useState } from "react";
 import "./Notes.css";
-import { useParams } from "react-router-dom"
 import { NoteContext } from "./NoteProvider"
-import { RecipeContext } from "../recipes/RecipeProvider"
-
+import Button from "react-bootstrap/Button"
 
 export const NoteCard = ({ note }) => {
     const { deleteNote } = useContext(NoteContext)
@@ -25,7 +23,7 @@ export const NoteCard = ({ note }) => {
             <section className="note">
                 <div className="note_text">{note.text}</div>
                 <div className="note_author"> - {note.user.name}</div>
-                <button onClick={handleDeleteNote}>Delete Note</button>
+                <Button className="del_btn" variant="light" size="sm" onClick={handleDeleteNote}>Delete Note</Button>
 
             </section>
         )

@@ -1,0 +1,23 @@
+.note {
+    background-color:rgba(121, 119, 119, 0.899);
+    color: floralwhite;
+    width: 400px;
+    border: solid;
+    border-color: floralwhite;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+.del_btn {
+    margin-top: 5px;
+    margin-bottom: 5px;
+    margin-left: 100px;
+}
+.recipes {
+    background-color:rgba(121, 119, 119, 0.673);
+    color: floralwhite;
+    width: 400px;
+    border: solid;
+    border-color: floralwhite;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}

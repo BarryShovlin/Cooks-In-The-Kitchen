@@ -4,6 +4,7 @@ import { RecipeContext } from "../recipes/RecipeProvider"
 import "./Notes.css"
 import { useHistory, useParams } from "react-router-dom"
 import { KitchenContext } from "../kitchens/KitchenProvider"
+import Button from "react-bootstrap/Button"
 
 
 
@@ -48,11 +49,10 @@ export const NoteForm = () => {
             <h2 className="noteForm_title"> Add a note</h2>
             <fieldset>
                 <div className="form-group">
-                    <label htmlFor="text">Recipe Notes</label>
                     <input type="text" id="text" onChange={handleInputChange} required autoFocus className="form-control" placeholder="Write your note here" value={note.text} />
                 </div>
             </fieldset>
-            <button onClick={handleClickSaveNote}>Save This Note</button>
+            <Button variant="secondary" onClick={handleClickSaveNote}>Save This Note</Button>
 
         </form>
 
