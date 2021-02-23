@@ -3,6 +3,7 @@ import { IngredientContext } from "./IngredientProvider"
 import { RecipeContext } from "../recipes/RecipeProvider"
 import "./Ingredients.css"
 import { useHistory, useParams } from "react-router-dom"
+import Button from "react-bootstrap/Button"
 
 
 
@@ -57,7 +58,7 @@ export const IngredientForm = () => {
                     <input type="text" id="amount" onChange={handleInputChange} required autoFocus className="form-control" placeholder="example: 1cup" value={ingredient.amount} />
                 </div>
             </fieldset>
-            <button onClick={handleClickSaveIngredient}>Add To The Recipe</button>
+            <Button className="ingBtn" variant="secondary" size="sm" onClick={handleClickSaveIngredient}>Add To The Recipe</Button>
         </form>
     )
 

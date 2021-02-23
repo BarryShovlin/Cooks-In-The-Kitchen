@@ -2,6 +2,7 @@ import React, { useState, useContext, useEffect } from "react";
 import "./Recipe.css";
 import { Link } from "react-router-dom"
 import { RecipeContext } from "./RecipeProvider"
+import Button from "react-bootstrap/Button"
 
 
 export const RecipeCard = ({ recipe }) => {
@@ -26,11 +27,11 @@ export const RecipeCard = ({ recipe }) => {
             </h3>
             <div className="recipe__creator">recipe by: {recipe.user?.name}</div>
             <div className="recipe__description">{recipe.description}</div>
-            <button>
-                <Link to={`/recipes/detail/${recipe.id}`}>
+            <Button className="btn" variant="secondary" size="sm">
+                <Link className="recipeView" to={`/recipes/detail/${recipe.id}`}>
                     View Full Recipe
                 </Link>
-            </button>
+            </Button>
 
         </section>
     );

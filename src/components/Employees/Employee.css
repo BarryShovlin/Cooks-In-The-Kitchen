@@ -1,0 +1,9 @@
+.employee {
+    color:floralwhite;
+    border: solid;
+    border-color: floralwhite;
+    width: 300px;
+    background: rgb(50, 49, 49);
+    margin-bottom: 20px;
+    margin-top: 20px;
+}

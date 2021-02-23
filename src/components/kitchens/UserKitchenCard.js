@@ -29,10 +29,11 @@ export const UserKitchenCard = ({ userKitchen }) => {
             </h3>
             <div className="kitchen__address">{userKitchen.kitchen.address}</div>
             <div className="kitchen__phone">phone:{userKitchen.kitchen.phone}</div>
-            <Button variant="secondary" onClick={() => history.push(`/userKitchen/detail/${userKitchen.kitchenId}`)}>Check out the recipes </Button>
-            <Button variant="secondary" onClick={() => history.push(`/employees/detail/${userKitchen.kitchenId}`)}>Team Info</Button>
-            <Button variant="secondary" onClick={handleDeleteUserKitchen}>Remove From Your Kitchens</Button>
-
+            
+            <Button className="det_button" variant="secondary" onClick={() => history.push(`/userKitchen/detail/${userKitchen.kitchenId}`)}>Check out the recipes </Button>
+            <Button className="det_button" variant="secondary" onClick={() => history.push(`/employees/detail/${userKitchen.kitchenId}`)}>Team Info</Button>
+            <Button className="det_button" variant="secondary" onClick={handleDeleteUserKitchen}>Remove From Your Kitchens</Button>
+            
 
         </section>
     );

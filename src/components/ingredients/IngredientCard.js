@@ -1,6 +1,7 @@
 import React, { useContext } from "react";
 import "./Ingredients.css";
 import { IngredientContext } from "./IngredientProvider"
+import Button from "react-bootstrap/Button"
 
 export const IngredientCard = ({ ingredient }) => {
 
@@ -23,7 +24,9 @@ export const IngredientCard = ({ ingredient }) => {
     if (currentUser === userIngredient) {
         return (
             <section className="ingredient">
-                <div className="ingredient_text">({ingredient.amount})   {ingredient.name} <button onClick={handleDeleteIngredient}>Remove Ingredient</button></div>
+                <div className="ingredient_text">({ingredient.amount})   {ingredient.name} 
+                <Button variant="secondary"  onClick={handleDeleteIngredient}>Remove Ingredient</Button>
+                </div>
 
             </section>
         )

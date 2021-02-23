@@ -44,10 +44,6 @@ export const IngredientList = () => {
       </div>
       <div className="recipe_notes">{currentRecipeNoteText}</div>
 
-      <div className="recipes">
-
-      </div>
-
     </>
   )
 }

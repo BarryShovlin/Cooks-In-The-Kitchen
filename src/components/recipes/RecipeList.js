@@ -3,6 +3,7 @@ import { useParams, Link } from "react-router-dom"
 import { RecipeContext } from "./RecipeProvider"
 import { RecipeCard } from "./RecipeCard"
 import { KitchenContext } from "../kitchens/KitchenProvider"
+import Button from "react-bootstrap/Button"
 
 export const RecipeList = () => {
   const { recipes, getRecipes } = useContext(RecipeContext)
@@ -33,11 +34,11 @@ export const RecipeList = () => {
         }
       </div>
 
-      <button>
-        <Link to={`/recipes/detail/addRecipe/${kitchenId}`}>
+      <Button variant="secondary">
+        <Link className="newRec" to={`/recipes/detail/addRecipe/${kitchenId}`}>
           Add a new recipe
                 </Link>
-      </button>
+      </Button>
 
 
     </>
