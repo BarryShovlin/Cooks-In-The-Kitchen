@@ -1,9 +1,7 @@
 .note {
-    background-color:rgba(121, 119, 119, 0.899);
+    background-color:rgba(121, 119, 119, 0.105);
     color: floralwhite;
-    width: 400px;
-    border: solid;
-    border-color: floralwhite;
+    width: 350px;
     margin-top: 10px;
     margin-bottom: 10px;
 }
@@ -12,12 +10,4 @@
     margin-bottom: 5px;
     margin-left: 100px;
 }
-.recipes {
-    background-color:rgba(121, 119, 119, 0.673);
-    color: floralwhite;
-    width: 400px;
-    border: solid;
-    border-color: floralwhite;
-    margin-top: 10px;
-    margin-bottom: 10px;
-}
+

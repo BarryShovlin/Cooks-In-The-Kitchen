@@ -27,3 +27,12 @@
     color: floralwhite;
     width: 500px
 }
+.recipes {
+    background-color:rgba(121, 119, 119, 0.899);
+    color: floralwhite;
+    width: 400px;
+    border: solid;
+    border-color: floralwhite;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
