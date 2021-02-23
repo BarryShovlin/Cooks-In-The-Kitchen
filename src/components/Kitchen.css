@@ -2,7 +2,12 @@
 
 /*Typography
 --------------------------------------------------------------*/
-body,
+body {
+  background-image: url(./shutterstock_291971708\ \(1\).jpg);
+  background-repeat: no-repeat;
+  background-size:cover;
+}
+
 button,
 input,
 select,
@@ -21,6 +26,7 @@ h5,
 h6 {
   font-family: "Patua One", serif;
   letter-spacing: 2px;
+  color: white
 }
 
 p {

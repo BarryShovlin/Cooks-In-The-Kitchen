@@ -3,6 +3,7 @@ import { KitchenContext } from "../kitchens/KitchenProvider"
 import { RecipeContext } from "./RecipeProvider"
 import "./Recipe.css"
 import { useHistory, useParams } from "react-router-dom"
+import Button from "react-bootstrap/Button"
 
 
 
@@ -71,7 +72,7 @@ export const RecipeForm = () => {
                     <input type="text" id="price" onChange={handleInputChange} require autoFocus className="form-control" placeholder="Price" value={recipe.price} />
                 </div>
             </fieldset>
-            <button onClick={handleClickSaveRecipe}>Save This Recipe</button>
+            <Button variant="secondary" onClick={handleClickSaveRecipe}>Save This Recipe</Button>
 
 
         </form>

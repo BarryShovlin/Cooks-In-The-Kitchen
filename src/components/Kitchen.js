@@ -13,8 +13,12 @@ export const Kitchen = () => (
         if (localStorage.getItem("kitchen_user")) {
           return (
             <>
+            
+            <div className="bg">
               <NavBar />
               <ApplicationViews />
+              </div>
+              
             </>
           );
         } else {

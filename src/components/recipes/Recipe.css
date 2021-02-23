@@ -1,0 +1,38 @@
+
+.recipe {
+    color: floralwhite;
+    border: solid;
+    border-color:rgb(113, 111, 109);
+    width: 500px;
+    margin-bottom: 20px;
+    margin-top: 20px;
+}
+.recipeView {
+    color: floralwhite;
+}
+.btn {
+    border: solid;
+    border-color:floralwhite;
+}
+.newRec {
+    color: floralwhite;
+}
+.addRemBtn {
+    margin-top: 5px;
+    margin-bottom: 5px;
+    margin-left: 5px;
+    margin-right: 5px;
+}
+.recipeForm {
+    color: floralwhite;
+    width: 500px
+}
+.recipes {
+    background-color:rgba(121, 119, 119, 0.899);
+    color: floralwhite;
+    width: 400px;
+    border: solid;
+    border-color: floralwhite;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}

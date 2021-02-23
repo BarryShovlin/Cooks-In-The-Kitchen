@@ -10,7 +10,7 @@ export const EmployeeCard = ({ employee }) => {
             <h3 className="employee__name">
                 {employee.user?.name}
             </h3>
-            <div className="employee_position">{employee.position}</div>
+            <h4 className="employee_position">{employee.position}</h4>
             <div className="employee_email">Email Address: {employee.user?.email}</div>
 
 

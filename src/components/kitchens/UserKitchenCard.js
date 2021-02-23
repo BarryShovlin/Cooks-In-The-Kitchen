@@ -2,6 +2,7 @@ import React, { useContext } from "react";
 import "./Kitchen.css";
 import { useHistory } from "react-router-dom"
 import { UserKitchenContext } from "./UserKitchenProvider"
+import Button from "react-bootstrap/Button"
 
 export const UserKitchenCard = ({ userKitchen }) => {
     const { deleteUserKitchen } = useContext(UserKitchenContext)
@@ -22,16 +23,17 @@ export const UserKitchenCard = ({ userKitchen }) => {
 
 
     return (
-        <section className="kitchen">
+        <section className="your_kitchen">
             <h3 className="kitchen__name">
                 {userKitchen.kitchen.name}
             </h3>
             <div className="kitchen__address">{userKitchen.kitchen.address}</div>
             <div className="kitchen__phone">phone:{userKitchen.kitchen.phone}</div>
-            <button onClick={() => history.push(`/userKitchen/detail/${userKitchen.kitchenId}`)}>Check out the recipes </button>
-            <button onClick={() => history.push(`/employees/detail/${userKitchen.kitchenId}`)}>Team Info</button>
-            <button onClick={handleDeleteUserKitchen}>Remove From Your Kitchens</button>
-
+            
+            <Button className="det_button" variant="secondary" onClick={() => history.push(`/userKitchen/detail/${userKitchen.kitchenId}`)}>Check out the recipes </Button>
+            <Button className="det_button" variant="secondary" onClick={() => history.push(`/employees/detail/${userKitchen.kitchenId}`)}>Team Info</Button>
+            <Button className="det_button" variant="secondary" onClick={handleDeleteUserKitchen}>Remove From Your Kitchens</Button>
+            
 
         </section>
     );

@@ -37,16 +37,12 @@ export const IngredientList = () => {
   return (
     <>
       <h3 className="ingredients">Ingredients:</h3>
-      <div className="recipe_ingredients">
+      <ul className="recipe_ingredients">
         {recipeIngredients.map(i => {
           return <IngredientCard key={i.id} ingredient={i} />
         })}
-      </div>
+      </ul>
       <div className="recipe_notes">{currentRecipeNoteText}</div>
-
-      <div className="recipes">
-
-      </div>
 
     </>
   )

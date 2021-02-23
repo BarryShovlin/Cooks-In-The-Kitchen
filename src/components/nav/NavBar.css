@@ -1,10 +1,20 @@
 .navbar {
     display: flex;
     flex-wrap: nowrap;
-    justify-content: left;
+    width: 900px
 }
 
 .navbar__item {
     flex-basis: 20%;
     list-style-type: none;
+    color:floralwhite
+}
+
+.navbar__logout {
+    background-color:floralwhite;
+    justify-content: right;
+}
+
+.navbar__link {
+    color: floralwhite;
 }

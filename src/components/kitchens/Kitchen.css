@@ -1,13 +1,57 @@
 
+
+.kitchen {
+    display: grid;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: rgb(50, 49, 49);
+    width: 300px;
+    border: solid;
+    border-color: floralwhite;
+    margin-bottom: 20px;
+    margin-top: 20px;
+    align-content:center
+    
+    
+}
+
+.kitchen__name {
+    color: white
+}
+
+.button {
+    border: solid;
+    border-color:floralwhite;
+    margin-bottom: 5px;
+    margin-top: 5px;
+    margin-left: 5px;
+    margin-right: 5px;
+}
+
+.addUserKitchen {
+        
+        display: flex;
+        justify-items: center;
+        flex-wrap: wrap;
+        margin-bottom: 50px;
+}
 .kitchens {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
-  }
-  
-  .kitchen {
-      flex-basis: 28%;
-      margin: 1em;
-      padding: 1em;
-      border: 1px solid goldenrod;
-  }
+    color:floralwhite
+}
+
+.form-group {
+    width: 300px
+}
+
+.your_kitchen {
+    border: solid;
+    border-color: floralwhite;
+    width: 500px;
+    color:floralwhite;
+    margin-bottom: 10px;
+    margin-top: 10px;
+}
+.det_button {
+    margin-top: 5px;
+    margin-bottom: 5px;
+    margin-right: 5px;
+}

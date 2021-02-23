@@ -3,6 +3,7 @@ import { RecipeContext } from "./RecipeProvider"
 import "./Recipe.css"
 import { useParams, useHistory, Link } from "react-router-dom"
 import { IngredientList } from "../ingredients/IngredientList"
+import Button from "react-bootstrap/Button"
 
 export const RecipeDetail = () => {
     const { getRecipeById, deleteRecipe } = useContext(RecipeContext)
@@ -54,9 +55,9 @@ export const RecipeDetail = () => {
                 <div className="recipe_description">{recipe.description}</div>
                 <div className="recipe_price">price: {recipe.price}</div>
                 <IngredientList />
-                <button onClick={handleAddIngredient}>Add Ingredient</button>
+                <Button className="addRemBtn" variant="secondary" onClick={handleAddIngredient}>Add Ingredient</Button>
 
-                <button onClick={handleDeleteRecipe}>Delete This Recipe</button>
+                <Button variant="secondary" onClick={handleDeleteRecipe}>Delete This Recipe</Button>
 
             </section>
         )
